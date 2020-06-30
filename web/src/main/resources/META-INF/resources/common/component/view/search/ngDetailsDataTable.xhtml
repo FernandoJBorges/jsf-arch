@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+	<!-- INTERFACE -->
+	<composite:interface>
+	</composite:interface>
+		
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="componentes/ngDetailDataTable.css" />
+		<p:outputPanel id="abaToken" styleClass="ng-emptyList clearfix" rendered="#{empty defaultMBean.lazyModelDetails}">
+				<p:graphicImage library="common" name="neogrid/imgs/lbl-findWarningEmpty.png" /> 
+				#{i18n['list.action.search.listEmpty']}
+		</p:outputPanel>
+		<p:dataTable id="ng-data-table"
+					var="row" 
+					value="#{defaultMBean.lazyModelDetails}"
+					lazy="true" 
+					rendered="#{not empty defaultMBean.lazyModelDetails}"
+					emptyMessage="#{i18n['list.action.search.listEmpty']}" 
+					rows="10" 
+					resizableColumns="true" 
+					styleClass="ng-dataTable-style"
+					paginatorPosition="bottom" 
+					paginator="true" 
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="10,50,100,150,200"
+					>
+					<composite:insertChildren />
+		</p:dataTable>
+	</composite:implementation>
+</ui:composition>

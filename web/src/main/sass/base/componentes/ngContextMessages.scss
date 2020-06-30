@@ -1,0 +1,17 @@
+@import '../include/commons/mixins';
+
+.ng-context-messages {
+	border: 1px dashed #dddddd;
+    margin-bottom: 15px;
+	padding: 15px;
+	text-align: center;    
+	@include border-radius(4px);
+}
+
+.ng-context-messages .content {
+	display: block;
+}
+
+.ng-context-messages .content img {
+ 	vertical-align: middle;
+}

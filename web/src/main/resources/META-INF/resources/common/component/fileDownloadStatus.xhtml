@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<composite:interface />
+	<composite:implementation>
+	<h:outputScript library="js" name="fileDownloadStatus.js" />
+	<p:remoteCommand name="updateMessages" update=":messages" global="false" onstart="fileDownloadStatus.startDownload()" />
+	</composite:implementation>
+</ui:composition>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<composite:interface>
+		<composite:attribute name="widgetVar" />
+		<composite:attribute name="header" />
+		<composite:attribute name="closable" default="true" />
+		<composite:attribute name="titleBtn" default="Ok" />
+		<composite:attribute name="width" default="400" />
+		<composite:attribute name="viewMessageDialog" default="true" />
+	</composite:interface>
+	<composite:implementation>
+		<ui:param name="widgetVar" value="#{cc.attrs.widgetVar}" />
+		<p:dialog id="#{widgetVar}" 
+					widgetVar="#{widgetVar}" 
+					modal="true" 
+					draggable="false" 
+					closable="#{cc.attrs.closable}"
+					resizable="false" 
+					width="#{cc.attrs.width}"
+					responsive="true">
+					<ui:include src="header.xhtml">
+					 	<ui:param name="header" value="#{cc.attrs.header}" />
+					 	<ui:param name="renderedHeader" value="#{cc.attrs.viewMessageDialog}" />
+					</ui:include>
+					<p:outputPanel styleClass="ng-containner ng-containner-dialog">
+						<composite:insertChildren />
+					</p:outputPanel>
+					<div class="ng-dialgo-btn">
+					<p:commandButton id="#{cc.id}-ok" value="#{cc.attrs.titleBtn}" 
+									 styleClass="ng-ui-button" 
+									 onclick="PF('#{widgetVar}').hide();"
+									 />
+					</div>
+		</p:dialog>
+	</composite:implementation>
+</ui:composition>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:dialog="http://java.sun.com/jsf/composite/dialog"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component">
+<f:view contentType="text/html">
+	<h:head>
+		<c:set var="contextPath" value="#{request.contextPath}" scope="request" />
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<link rel="shortcut icon" href="#{contextPath}/common/neogrid/imgs/ng-favicon.ico" />
+			<meta http-equiv="cache-control" content="no-cache" />
+			<meta http-equiv="pragma" content="no-cache" />
+			<f:verbatim>
+				<!--[if lte IE 8]>
+					<link type="text/css" rel="stylesheet" href="#{contextPath}/javax.faces.resource/ng-ie8.css.jsf?ln=common/css/ng" />
+		    	<![endif]-->
+			</f:verbatim>
+		</f:facet>
+		<title>Neogrid - Fiscal</title>
+		<h:outputStylesheet name="ng-theme.css" library="css" />
+		<h:outputStylesheet name="NeoGrid-Font-Icons.css" library="css" />
+		<h:outputScript library="common" name="js/componentes/calendarLocale.js"></h:outputScript>
+		
+		<c:if test="#{principalMB.piwikSiteId ne '-'}">
+			<!-- Piwik -->
+			<script type="text/javascript">
+			var _paq = _paq || [];
+			_paq.push(["setDomains", ["*.#{principalMB.piwikSiteUrl}"]]);
+			_paq.push(['trackPageView']);
+			_paq.push(['enableLinkTracking']);
+			(function()
+			{ var u="//analytics.neogrid.com/piwik/"; _paq.push(['setTrackerUrl', u+'piwik.php']); _paq.push(['setSiteId', #{principalMB.piwikSiteId}]); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s); }
+			)();
+			</script>
+			<noscript>
+				<p>
+					<img src="//analytics.neogrid.com/piwik/piwik.php?idsite=#{principalMB.piwikSiteId}" style="border: 0;" alt="" />
+				</p>
+			</noscript>
+			<!-- End Piwik Code -->
+		</c:if>
+	</h:head>
+	<h:body>
+		<ng:ajaxStatus id="ajaxStatus" />
+		<div id="ng-page-wrapper" class="ui-g">
+					<div id="ng-page-header" class="ui-g-12 ui-g-nopad">
+						<h:form id="formHeader" prependId="false">
+							<ui:insert name="header">
+								<ui:include src="header.xhtml" />
+							</ui:insert>
+						</h:form>
+					</div>
+				<h:form id="menuHidden" prependId="false">
+				<ui:insert name="menuHidden">
+					<nav class="ng-page-navbar-reponsive">
+						<ui:include src="menu.xhtml" />
+					</nav>
+				</ui:insert>
+			</h:form>
+			<p:outputPanel id="ng-page-content" styleClass="ng-page-content ui-g-12 ui-g-nopad">
+						<p:messages id="messages" showDetail="false" closable="true" escape="false" />
+						<ui:insert name="content" />
+					</p:outputPanel>
+		</div>
+		<div id="ng-page-footer">
+				<ui:insert name="footer">
+					<ui:include src="footer.xhtml" />
+				</ui:insert>
+		</div>
+		<dialog:dialogEstablishment id="zoomEstUserHeader" 
+									defaultMBs="#{principalMB}" 
+									enabledSelectionMode="false" 
+									updateField=":zoomEstUserHeader:zoomEstUserHeaderForm:zoomEstUserHeadertbStabelecimento" />
+		<dialog:dialogPassword id="passwordDialog"/>
+		<p:tooltip escape="false" />
+		<c:if test="#{not empty request.userPrincipal.name}">
+		<!-- multilogout -->
+		<h:outputScript library="common" name="js/multilogout/multilogout.js"/>
+		<h:outputScript library="common" name="js/componentes/cleanToolTips.js"/>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					multilogout.login('#{contextPath}', '#{request.userPrincipal.name}', '#{request.userPrincipal.principal.userBO.isPortalOnly()}');
+				});
+			</script>
+		</c:if>
+	</h:body>
+</f:view>
+</html>

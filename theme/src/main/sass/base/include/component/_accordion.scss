@@ -1,0 +1,19 @@
+.ui-accordion .ui-accordion-header {
+	background: $colorOffWhite;
+}
+
+.ui-accordion .ui-accordion-header:HOVER {
+	background: $colorOffWhite;
+}
+
+.ui-accordion .ui-accordion-content {
+	border: $colorDisabled solid 1px;
+}
+
+.ui-accordion-header.ui-state-active {
+	background: $colorOffWhite;
+}
+
+.ui-accordion-header.ui-state-default {
+	background: $colorOffWhite !important;
+}

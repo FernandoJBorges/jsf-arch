@@ -1,0 +1,13 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="httpError.xhtml">	
+	<ui:define name="httpMessage">
+		<p:outputLabel id="http-error-403" value="#{i18n['msg.error.deny.permission']}" styleClass="error-message" />
+		<p:outputPanel rendered="#{param['sessionControlError'] != null}">
+			<br /><p:outputLabel id="http-error-403-detail" value="#{i18n['msg.error.session.control']}" />
+		</p:outputPanel>
+	</ui:define>
+</ui:composition>
+</html>

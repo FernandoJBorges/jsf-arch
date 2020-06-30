@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="btnRenderSelection" type="java.lang.Boolean" default="true" />
+	</composite:interface>
+	
+
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="componentes/ngDetailDataTable.css" />
+		<p:outputPanel id="ng-panel-datatable" styleClass="ng-panel-datatable">
+			<p:dataTable id="ng-data-table" 
+					rows="10"
+					var="row" 
+					lazy="true"
+					paginator="true" 
+					rowKey="#{row.uid}"
+					widgetVar="dataTable" 
+					resizableColumns="true"
+					paginatorPosition="bottom"
+					value="#{defaultMBean.lazyModel}" 
+					styleClass="ng-data-table"
+					selection="#{defaultMBean.lazyModelSelection}" 
+					rendered="#{defaultMBean.lazyModel.listSize > 0}"
+					emptyMessage="#{i18n['list.action.search.listEmpty']}" 
+					paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="10,50,100,150,200">
+					<p:column selectionMode="multiple" id="selectionMode" styleClass="ng-datatable-custom ng-toolbar-update" style="width:13px;text-align:center" toggleable="false" exportable="false" rendered="#{cc.attrs.btnRenderSelection}" />
+					<p:ajax event="rowSelectCheckbox" listener="#{defaultMBean.rowSelectCheckbox}" partialSubmit="true" global="false" update="@(.updateable-by-datatable)" />
+					<p:ajax event="rowUnselectCheckbox" listener="#{defaultMBean.rowUnselectCheckbox}" partialSubmit="true" global="false" update="@(.updateable-by-datatable)" />
+					<p:ajax event="rowSelect" listener="#{defaultMBean.rowSelectCheckbox}" partialSubmit="true" global="false" update="@(.updateable-by-datatable)" />
+					<p:ajax event="rowUnselect" listener="#{defaultMBean.rowUnselectCheckbox}" partialSubmit="true" global="false" update="@(.updateable-by-datatable)" />
+					<p:ajax event="toggleSelect" listener="#{defaultMBean.toggleSelect}" partialSubmit="true" global="false" update="@(.updateable-by-datatable)" />
+					<p:ajax event="rowToggle" listener="#{defaultMBean.onRowToggle}" partialSubmit="true" global="false" update="@(.updateable-by-datatable)" />
+			<composite:insertChildren />
+			</p:dataTable>
+		</p:outputPanel>
+	</composite:implementation>
+</ui:composition>

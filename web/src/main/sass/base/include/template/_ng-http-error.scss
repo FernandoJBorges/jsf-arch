@@ -1,0 +1,34 @@
+.http-error-content {
+	text-align: center !important;
+	display: block;
+	
+	> * {
+		display: block;
+		font-size: 13px;
+	}
+	
+	.icon-warning-sign {
+		font-size: 50px; 
+		color: #ed1c24; 
+		line-height: normal; 
+		margin: 20px 0 30px !important;
+	}
+	
+	.introduction {
+		margin: 30px 0 30px;
+	}
+	.error-message {
+		font-size: 26px;
+	}
+	
+	> a {
+		margin: 50px 0 30px;
+	}
+	
+	.stack-trace-error {
+		width:90%;
+		height:400px;
+		margin-left: 5%;
+		text-align: left !important;
+	}
+}

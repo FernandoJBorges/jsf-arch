@@ -1,0 +1,81 @@
+/* begin overide tabs */
+.ui-tabs .ui-tabs-panel {
+	min-width: 800px;
+}
+
+.ui-tabs .ui-tabs-panel {
+	border-bottom: 0px !important;
+}
+
+ul.ui-tabs-nav {
+	background: $colorWhite;
+}
+
+.ui-tabs-top.ui-widget-content {
+	border: 0px solid;
+}
+
+.ui-tabs-panels {
+	border: 1px solid $colorDisabled;
+	margin: 0.5em 1em;
+	@include transition;
+	@include border-radius(4px);
+}
+
+.ui-tabs-selected.ui-state-active.ui-state-default {
+	background: $colorOffWhite;
+	@include transition;
+}
+
+.ui-tabs.ui-tabs-top>.ui-tabs-nav li {
+	border: 1px solid $colorOffWhite !important;
+	top: 0px;
+	margin: 2px;
+	@include transition;
+	@include border-radius(4px);
+}
+
+.ui-tabs.ui-tabs-top>.ui-tabs-nav li:HOVER {
+	background: $colorOffWhite;
+	@include transition;
+	@include border-radius(4px);
+}
+
+.ui-tabs.ui-tabs-top>.ui-tabs-nav li:first-child {
+	margin-left: 9px;
+}
+
+.ui-tabs-nav .ui-state-default {
+	background: $colorWhite;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+	color: black;
+	display: inline-block;
+	font-family: $fontFamily;
+	font-size: 13px;
+	font-weight: normal;
+	padding: 0.85em 1.4em !important;
+	@include transition;
+	@include border-radius(4px);
+}
+
+.tabview-container .ui-button.refreshButton {
+	float: right;
+	top: 10px;
+	right: 17px;
+	overflow: hidden;
+	z-index: 1;
+	text-indent: 0 !important;
+}
+
+.tabview-container .refreshButton .ui-icon {
+	margin-top: -11px;
+	margin-left: -7px;
+}
+
+.ui-tabs-nav .ui-state-disabled:HOVER {
+	background: transparent !important;
+}
+/* end overide tabs */
+

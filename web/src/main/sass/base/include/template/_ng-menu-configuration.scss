@@ -1,0 +1,178 @@
+.lvl-first {
+	display: block;
+	width: 17px;
+	z-index: 2;
+	height: 17px;
+	text-align: center;
+	color: $colorOffWhite !important;
+	text-decoration-color: -moz-use-text-color;
+	text-decoration-line: none;
+	text-decoration-style: solid;
+	text-transform: uppercase;
+	font-family: $fontFamilyBold;
+	@include border-radius(4px);
+	@include padding(10px);
+	@include transition();
+}
+
+.lvl-first .fa-cog {
+	font-size: 21px !important;
+}
+
+.lvl-first .fa-question::before{
+	color: $colorOffWhite !important;
+}
+
+.lvl-first:HOVER {
+	opacity: 0.75;
+    filter: alpha(opacity=75);
+}
+
+.lvl-first .fa-question {
+	font-size: 21px !important
+}
+.lvl-first .fa-question::before{
+	background: transparent;
+}
+
+.lvl-first .ico-configuration {
+	@include padding(10px);
+}
+
+.lvl-first .ico-configuration ,
+.lvl-first .ico-help {
+	height: 12px;
+	vertical-align: middle;
+	width: 24px;
+	@include margin-top-right-bottom-left(2px, 0px, 0px, 5px);
+}
+
+.lvl-second {
+	display: none;
+	position: absolute;
+	min-width: 175px;
+	z-index: 999;
+	right: 0px;
+}
+
+.lvl-second .lvl-second-content {
+	-moz-border-colors: none;
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: $colorWhite;
+	background-image: none;
+	background-origin: padding-box;
+	background-position-x: 0;
+	background-position-y: 0;
+	background-repeat: repeat;
+	background-size: auto auto;
+	border-image-outset: 0 0 0 0;
+	border-image-repeat: stretch stretch;
+	border-image-slice: 100% 100% 100% 100%;
+	border-image-source: none;
+	border-image-width: 1 1 1 1;
+	border-color: $colorDisabled;
+	border-width: 1px;
+	border-style: solid;
+	margin-top: 5px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	z-index: 1;
+	font-family: $fontFamily;
+	@include border-radius(4px);
+	@include padding-top-right-bottom-left(0px, 10px, 10px, 10px);
+}
+
+li:hover .lvl-second {
+	display: block;
+}
+
+.lvl-second-content .option {
+	float: left;
+	height: auto;
+	width: 210px;
+	max-width: 210px;
+	font-size: 13px !important;
+	@include margin-top-right-bottom-left(8px, 0px, 0px, -1px);
+	@include padding(5px);
+}
+
+.lvl-second-content .option a {
+	display: block;
+	height: 100%;
+	text-decoration-color: -moz-use-text-color;
+	text-decoration-line: none;
+	text-decoration-style: solid;
+	width: 100%;
+	text-decoration: none;
+	font-family: $fontFamily;
+	font-size: 13px;
+}
+
+.lvl-second-content .option a:hover {
+	text-decoration-color: -moz-use-text-color;
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration: underline;
+}
+
+.lvl-second-content .option .observation {
+	display: block;
+}
+
+.lvl-second-content .option .observation, .lvl-second-content .option .observation a {
+	color: #999999;
+	margin-top: 2px;
+}
+
+.lvl-second-content .option .icon {
+	margin-right: 4px;
+}
+
+.lvl-second-content .option label {
+	display: inline-block;
+}
+
+.lvl-second-content .option .email {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 100%;
+}
+
+.lvl-second .line-separator {
+	width: 100%;
+}
+
+.ico-configuration, .ico-help, .ico-settings-black, .ico-help-black,
+	.ico-logout-black, .ico-key-black, .ico-chat-black, .ico-user-black {
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: rgba(0, 0, 0, 0);
+	background: url("../javax.faces.resource/sprite-config-menu.png.jsf?ln=common/img/icons");
+	background-origin: padding-box;
+	background-position-x: 0;
+	background-position-y: 0;
+	background-repeat: no-repeat;
+	background-size: auto auto;
+	height: 12px;
+	width: 12px;
+}
+
+#menuHelpConfiguration {
+	position: absolute;
+	right: 38px;
+	top: 18px;
+}
+
+#menuConfiguration {
+	position: absolute;
+	right: 8px;
+	top: 18px;
+}
+
+
+ol, ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}

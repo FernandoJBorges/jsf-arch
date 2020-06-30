@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- INTERFACE -->
+	<composite:interface>
+			<composite:attribute name="titleView" default="#{i18n['tooltip.commandLink.view.details']}" />
+			<composite:attribute name="renderedDefault" type="java.lang.Boolean" default="true" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+			<p:remoteCommand name="REMOTE" action="#{defaultMBean.onStartDataTableLineActions}" global="false" />
+			<p:commandButton id="ng-dyna-button" icon="fa fa-bars" styleClass="ng-command-button" title="#{i18n['tooltilp.column.actions.click']}" onstart="REMOTE()" global="false">
+						<f:setPropertyActionListener target="#{defaultMBean.entity}" value="#{row}" />
+			</p:commandButton>
+			<p:menu overlay="true" trigger="ng-dyna-button" my="left top" at="left bottom" style="width: 200px;">
+							<p:menuitem value="#{cc.attrs.titleView}" 
+										rendered="#{defaultMBean.hasPermission('VIEW_DETAILS') and cc.attrs.renderedDefault}"
+										update=":ng-form :ng-panel-crud-dialog :messages" 
+										action="#{defaultMBean.viewDetailsAction}" 
+										icon="fa fa-desktop"
+										styleClass="ng-context-menu-item"
+										immediate="true">
+										<f:setPropertyActionListener target="#{defaultMBean.entity}" value="#{row}" />
+										</p:menuitem>
+							<composite:insertChildren />
+			</p:menu>
+	</composite:implementation>
+</ui:composition>

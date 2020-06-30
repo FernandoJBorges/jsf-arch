@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="title" default="Aqui vai o SubTitle" />
+		<composite:attribute name="bottom" default="20" />
+		<composite:attribute name="top" default="20" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<p:outputPanel styleClass="line-separator" style="margin-bottom:#{cc.attrs.bottom}px;margin-top: #{cc.attrs.top}px;" />
+		<p:outputLabel styleClass="ui-outputlabel ui-widget ng-sub-title" value="#{cc.attrs.title}" />
+    </composite:implementation>
+</ui:composition>

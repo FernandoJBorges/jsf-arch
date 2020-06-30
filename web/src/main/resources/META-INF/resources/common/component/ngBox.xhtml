@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dialog="http://java.sun.com/jsf/composite/common/component/dialog">
+	
+		<!-- INTERFACE -->
+	<composite:interface>
+		<cc:attribute name="styleColor" default="border-bottom: 3px solid #a064ff"/>
+		<cc:attribute name="titleBox" type="java.lang.String" required="true"/>
+		<cc:attribute name="imageName" type="java.lang.String" default="solution-category.png"/>
+	</composite:interface>
+	
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+			        <li style="border-bottom: 3px solid #{cc.attrs.styleColor}" >
+			        	<h:graphicImage library="common" name="img/#{cc.attrs.imageName}" />
+			        	<p:outputPanel>
+			        		<h2 style= "border-bottom: 3px solid #{cc.attrs.styleColor}">#{cc.attrs.titleBox}</h2>
+			        		<p>
+			        			<cc:insertChildren />
+			        		</p>
+			        	</p:outputPanel>
+			        </li>
+	</composite:implementation>
+</ui:composition>

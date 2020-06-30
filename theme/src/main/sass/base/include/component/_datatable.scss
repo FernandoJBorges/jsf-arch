@@ -1,0 +1,145 @@
+.ui-datatable .ui-sortable-column-icon {
+	float: left;
+	margin-top: 0 !important;
+}
+
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td,
+	.ui-datatable tfoot th {
+	border: solid 0px !important;
+}
+
+.ui-datatable-tablewrapper {
+	overflow-x: hidden !important;
+	overflow-y: hidden !important;
+	@include border-radius(4px);
+}
+
+.ui-datatable-even {
+	background: transparent;
+	color: $colorTertiary;
+}
+
+.ui-datatable-even:HOVER {
+	background: $colorOverTable;
+	border: 1px solid $colorOffWhite;
+	border-bottom: 1px solid $colorOffWhite;
+}
+
+.ui-widget-content.ui-datatable-even {
+	border: 1px solid $colorOffWhite;
+	border-right: 2px solid $colorOffWhite;
+	border-bottom: 1px solid $colorOffWhite;
+}
+
+.ui-datatable-odd {
+	background: $colorWhite;
+	color: $colorTertiary;
+}
+
+.ui-datatable-odd:HOVER {
+	border: 1px solid $colorWhite;
+	border-bottom: 1px solid $colorOffWhite;
+	background: $colorOverTable;
+}
+
+.ui-datatable tbody td, .ui-datatable tfoot td {
+	border-style: none;
+}
+
+.ui-widget-content.ui-datatable-odd {
+	border: 1px solid $colorOffWhite;
+	border-right: 2px solid $colorOffWhite;
+	border-bottom: 1px solid $colorOffWhite;
+}
+
+.ui-widget-content.ui-datatable-even.ui-datatable-selectable:HOVER {
+	border: 1px solid $colorOffWhite;
+	border-bottom: 1px solid $colorOffWhite;
+	background: $colorOverTable;
+}
+
+.ui-widget-content.ui-datatable-odd.ui-datatable-selectable:HOVER {
+	border: 1px solid $colorWhite;
+	border-bottom: 1px solid $colorOffWhite;
+	background: $colorOverTable;
+}
+
+.ui-widget-content.ui-datatable-even.ui-datatable-selectable {
+	color: $colorTertiary;
+}
+
+.ui-widget-content.ui-datatable-odd.ui-datatable-selectable {
+	color: $colorTertiary;
+}
+
+.ui-datatable-even.ui-state-error, .ui-datatable-odd.ui-state-error {
+	border: 1px solid $colorDisabled !important;
+}
+
+.ui-datatable-resizable th.ui-resizable-column {
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 9px;
+	padding-top: 10px;
+	background: $colorEnable;
+}
+
+.ui-datatable-resizable thead th, .ui-datatable-resizable tbody td,
+	.ui-datatable-resizable tfoot td {
+	white-space: inherit !important;
+}
+
+.ui-datatable-data.ui-widget-content {
+	font-size: $fontSizeMin;
+}
+
+.ui-datatable tbody td, .ui-datatable tfoot td {
+	padding: 4px 5px !important;
+}
+
+.ui-datatable .ui-chkbox-icon.ui-icon {
+	width: 13px;
+	height: 13px;
+}
+
+.ui-datatable-resizable th.ui-resizable-column:first-child {
+	padding: 5px;
+}
+
+.ui-datatable-selectable td:first-child {
+	padding-left: 2px;
+	padding-right: 5px;
+}
+
+.ui-datatable table {
+	table-layout: auto !important;
+}
+
+/* custom check box datatable */
+.ng-datatable-custom .ui-chkbox {
+	height: 13px !important;
+	width: 13px !important;
+}
+
+.ng-datatable-custom .ui-chkbox-box {
+	height: 13px !important;
+	width: 13px !important;
+}
+
+.ng-datatable-custom .ui-icon-check {
+	background-position: -65px -146px;
+}
+
+/* custom table */
+.ng-panel-datatable {
+	padding: 5px;
+	margin: 0px;
+	top: 0px;
+	left: 0px;
+}
+
+.ui-expanded-row-content {
+	border-right: solid 2px$colorOffWhite;
+	border-left: solid 2px$colorOffWhite;
+	border-bottom: solid 1px$colorOffWhite;
+}

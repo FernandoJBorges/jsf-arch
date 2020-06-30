@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<facelet-taglib version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd">
+	<namespace>http://neogrid.com/taglib</namespace>
+	<composite-library-name>common</composite-library-name>
+	<!-- form de pesquisa [CRUD] -->
+	<tag>
+		<tag-name>ngFormSearch</tag-name>
+		<component>
+			<resource-id>common/componentes/ngFormSearch.xhtml</resource-id>
+		</component>
+		<attribute>
+			<description><![CDATA[Titulo da tela do form de pesquisa.]]></description>
+			<name>titleView</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Campos a serem atualizados apos a pesquisa.]]></description>
+			<name>updateSearch</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Define o metodos de ajax [true, false] para o campo de pesquisa]]></description>
+			<name>ajaxSearch</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Campos a serem atualizados apos reset dos campos.]]></description>
+			<name>updateClean</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Define o metodos de ajax [true, false] para o campo limpar]]></description>
+			<name>ajaxClean</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Define se o botao de consulta deve ser renderizado ou nao default é true]]></description>
+			<name>panelSearch</name>
+			<required>false</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+	</tag>
+	<!-- form de criacao e edicao [CRUD] -->
+	<tag>
+		<tag-name>ngFormEdit</tag-name>
+		<component>
+			<resource-id>resources/common/componentes/ngFormEdit.xhtml</resource-id>
+		</component>
+		<attribute>
+			<description><![CDATA[Titulo da tela.]]></description>
+			<name>titleView</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<!-- Componente p:dataTable com botoes de geracao de relatorios ja implementado 
+		e botoes de edicao -->
+	<tag>
+		<tag-name>ngDetailDataTable</tag-name>
+		<component>
+			<resource-id>common/componentes/ngDetailDataTable.xhtml</resource-id>
+		</component>
+	</tag>
+	<tag>
+		<tag-name>ngSearchViewTable</tag-name>
+		<component>
+			<resource-id>common/componentes/ngSearchViewTable.xhtml</resource-id>
+		</component>
+		<attribute>
+			<description><![CDATA[Titulo da tela.]]></description>
+			<name>updateGrid</name>
+			<required>false</required>
+			
+		</attribute>
+		<attribute>
+			<description><![CDATA[MB da Lista passada como parametro.]]></description>
+			<name>lazymodel</name>
+			<required>false</required>
+		
+		</attribute>
+		<attribute>
+			<description><![CDATA[Definir se o botão visualizar devera aparecer ou nao]]></description>
+			<name>renderedBtn</name>
+			<required>false</required>
+		
+		</attribute>
+	</tag>
+	
+	
+	
+	<!-- Componente com layout padrao para impressa dos titulos dos forms -->
+	<tag>
+		<tag-name>ngTitleView</tag-name>
+		<component>
+			<resource-id>common/componentes/ngTitleView.xhtml</resource-id>
+		</component>
+	</tag>
+	<tag>
+		<tag-name>ngSearchViewDetails</tag-name>
+		<component>
+			<resource-id>common/componentes/ngSearchViewDetails.xhtml</resource-id>
+		</component>
+	</tag>
+	<tag>
+		<tag-name>ngSearchViewDetailsTable</tag-name>
+		<component>
+			<resource-id>common/componentes/ngSearchViewDetailsTable.xhtml</resource-id>
+		</component>
+		<attribute>
+			<description><![CDATA[Lista a ser populada nos detalhes.]]></description>
+			<name>lazymodel</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+
+	<!-- form de criacao e edicao [CRUD] -->
+	<tag>
+		<tag-name>ngMessage</tag-name>
+		<component>
+			<resource-id>common/componentes/ngMessage.xhtml</resource-id>
+		</component>
+		<attribute>
+			<description><![CDATA[Mensagem a ser imprimida na tela.]]></description>
+			<name>message</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Tipo das mensagens existentes no primefaces [info, error] .]]></description>
+			<name>messageType</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<!-- COMPONENTE ZOOM - LIST OF VALUES -->
+	<tag>
+		<tag-name>ngListValuesComp</tag-name>
+		<component>
+			<resource-id>common/componentes/ngListValuesComp.xhtml</resource-id>
+		</component>
+		
+		<attribute>
+			<description><![CDATA[ID do componente.]]></description>
+			<name>id</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Model do componente.]]></description>
+			<name>bo</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+			<attribute>
+			<description><![CDATA[Codigo do ID do BO a ser pesquisado]]></description>
+			<name>boUID</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Codigo da descricao do BO a ser pesquisado]]></description>
+			<name>boDesc</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[ID do bo a ser atualizado pelo componente.]]></description>
+			<name>value</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Metodo responsavel por atualizar os campos apos acao do metodo responsavel por limpar a tela.]]></description>
+			<name>updateField</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Metodo responsavel por popular a descricao do BO selecionado.]]></description>
+			<name>findBOByUid</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Metodo responsavel por popular a LISTA do BO selecionado.]]></description>
+			<name>findByFilters</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Habilita/Desabilita os botoes na edicao do form.]]></description>
+			<name>enableSelection</name>
+			<required>true</required>
+			<type>java.lang.Boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Placeholder do BO a ser selecionado.]]></description>
+			<name>placeholder</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Service do BO a ser consultado.]]></description>
+			<name>repository</name>
+			<required>true</required>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Title dos Header das colunas da tabela usar i18n[]]]></description>
+			<name>boColumnHeaderI18n</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Propriedade do BO referente as colunas da tabela ]]></description>
+			<name>boColumnValue</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Id do componente que contera os filtros para pesquisa ]]></description>
+			<name>componentID</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+		<!-- componente da tela de consulta -->
+	<tag>
+		<tag-name>ngSearchView</tag-name>
+		<component>
+			<resource-id>common/componentes/ngSearchView.xhtml</resource-id>
+		</component>
+		<attribute>
+			<description><![CDATA[Titulo da tela do form de pesquisa.]]></description>
+			<name>titleView</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Campos a serem atualizados apos a pesquisa.]]></description>
+			<name>updateSearch</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[Campos a serem atualizados apos a pesquisa.]]></description>
+			<name>updateErease</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+</facelet-taglib>

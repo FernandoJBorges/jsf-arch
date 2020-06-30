@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"	
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- INTERFACE -->
+	<composite:interface>		
+		<composite:attribute name="message" required="true" />		
+		<composite:attribute name="messageType" default="info" />		
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="componentes/ngContextMessages.css" />
+		<p:outputPanel id="ng-context-messages-content" class="ng-context-messages">
+			<div class="content">
+				<h:graphicImage library="common" name="img/ngContextMessages-#{cc.attrs.messageType}.png"/>
+				#{cc.attrs.message}
+			</div>			
+		</p:outputPanel>
+	</composite:implementation>
+</ui:composition>

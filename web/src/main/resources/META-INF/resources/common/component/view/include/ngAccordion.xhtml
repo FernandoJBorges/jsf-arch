@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+ 		<p:remoteCommand name="toogleFilterAccordion" actionListener="#{defaultMBean.toogleFilterAccordion}" update=":ng-form:ng-search-comp:ng-accordion" global="false" />
+ 		<p:outputPanel id="ng-btn-accordion" styleClass="ui-g ng-accordion">
+		    <div class="ui-g-11">
+				<p:outputPanel  id="ng-btn-open-accordion" styleClass="ng-btn-open-accordion">
+								<p:outputPanel global="false">
+										<p:autoUpdate />
+										<p:outputPanel styleClass="#{defaultMBean.filterAccordionOpened ? 'fa fa-caret-down' : 'fa fa-caret-up'}" />
+										<p:outputLabel id="ng-content-accordion-title" 
+										value="#{i18n[defaultMBean.filterAccordionOpened ? 'ng-accordion-search-title-open' : 'ng-accordion-search-title-close']}"  
+										styleClass="ng-content-accordion-title" />
+								</p:outputPanel>
+								<h:outputScript library="common" name="js/componentes/ngAccordion.js" />
+								<h:outputStylesheet library="css" name="componentes/ngAccordion.css" />
+				</p:outputPanel>
+			 </div>
+			  <div class="ui-g-1">
+			     <c:if test="#{!renderedButtonCreateNew}">
+			        <c:if test="#{not empty defaultMBean.documentSearchFilters}">					
+				        <div class="ng-float-right">
+				            <p:commandLink id="btn-goback"
+				            				immediate="true" 
+				            				styleClass="ng-command-link" 
+				            				value="#{i18n['btn_action_goback']}" 
+				            				update=":ng-form:ng-panel-crud :ng-panel-crud-dialog :messages"  
+				            				action="#{defaultMBean.backToDocumentSearch()}" 
+				            				rendered="#{btnGoBackRendered}" />
+				        </div>
+			        </c:if>
+			        <c:if test="#{defaultMBean.showBackButtonInSearch()}">
+				       <div class="ng-float-right">
+				            <h:link id="btn-goback3"
+				            		outcome="#{defaultMBean.backToDocumentSearch()}"				            		
+				            		styleClass="ng-command-link"
+				            		value="#{i18n['btn_action_goback']}" />
+				        </div>
+				    </c:if>
+		        </c:if>
+		        <c:if test="#{renderedButtonCreateNew}">
+			        <p:commandButton id="btn-new" 
+									icon="fa fa-plus" 
+									styleClass="ng-ui-button ng-float-right btn-new"
+									update=":ng-form:ng-panel-crud :ng-panel-crud-dialog :messages"
+									value="#{i18n['btn_action_new']}" 
+									action="#{defaultMBean.createAction}" 
+									rendered="#{defaultMBean.hasPermission('CREATE')}" 
+									immediate="true"
+									/>
+				</c:if>
+			 </div>
+		</p:outputPanel>
+</ui:composition>

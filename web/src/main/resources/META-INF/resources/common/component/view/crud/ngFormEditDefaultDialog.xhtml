@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:composite="http://java.sun.com/jsf/composite"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="btnGoBackVisible" default="true"/>
+		<composite:attribute name="btnSaveLabel" default="#{i18n['btn_action_save']}"/>
+		<composite:attribute name="dialogHeader"  default="#{i18n['popup.msg.warn']}" />
+		<composite:attribute name="labelBtnConfirm" default="#{i18n['btn_action_yes']}" />
+		<composite:attribute name="labelBtnCancel" default="#{i18n['btn_action_cancel']}" />
+		<composite:attribute name="width" default="400" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+				<script>
+						<!-- FUNCTION CANCEL DIALOG CASE args.validationFailed = TRUE -->
+						 function handleDialogSubmit(xhr, status, args) {
+						        if (args.validationFailed) {
+						        	PF('dialBaseFormEdit').hide();
+						        } else {
+						        	PF('dialBaseFormEdit').show();
+						        }
+						    }
+				</script>
+				
+				<style>
+					#btn-save{
+                        margin-right: 9px;
+                        margin-right: 9px;
+						margin-top: 0px;
+					}
+				</style>
+				
+		<p:commandLink id="btn-goback" value="#{i18n['btn_action_goback']}" action="#{defaultMBean.findAction}" rendered="#{cc.attrs.btnGoBackVisible}" styleClass="ng-command-link" immediate="true"  ajax="true" update=":ng-form:ng-panel-crud :messages" />
+        <p:commandButton id="btn-save" value="#{cc.attrs.btnSaveLabel}"
+                         actionListener="#{defaultMBean.loadConfirmDialog}"
+                         oncomplete="handleDialogSubmit(xhr, status, args)" styleClass="ng-ui-button" icon="fa fa-save"
+                         type="submit" update=":ng-form:ng-panel-crud :messages"
+                         rendered="#{defaultMBean.hasPermission('EDIT')}"/>
+				<p:dialog id="dialBaseFormEdit" header="${fn:toUpperCase(cc.attrs.dialogHeader)}" modal="true" widgetVar="dialBaseFormEdit" draggable="false" resizable="false" minHeight="40" width="#{cc.attrs.width}">
+					<p:outputPanel class="ngMessageDialog">
+							<p:outputLabel value="#{defaultMBean.dialogMessage}"></p:outputLabel>
+					</p:outputPanel>
+					<div class="ng-dialgo-btn">
+						<p:commandButton value="#{cc.attrs.labelBtnConfirm}" action="#{defaultMBean.confirmDialogSave}" styleClass="ng-ui-button" onclick="PF('dialBaseFormEdit').hide();" type="submit"  update=":ng-form:ng-panel-crud :messages"></p:commandButton>
+						<p:commandButton value="#{cc.attrs.labelBtnCancel}" action="#{defaultMBean.confirmDialogCancel}" styleClass="ng-ui-button"  onclick="PF('dialBaseFormEdit').hide();"  type="submit" update=":ng-form:ng-panel-crud :messages"></p:commandButton>
+					</div>
+				</p:dialog>
+	</composite:implementation>
+</ui:composition>

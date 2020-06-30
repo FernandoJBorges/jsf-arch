@@ -1,0 +1,85 @@
+
+.ui-widget-content .ui-menu-child {
+	border: solid 0px;
+}
+
+.ng-context-menu-item.ui-menuitem-link {
+	width: 96% !important;
+}
+
+.ng-context-menu-item.ui-menuitem-link:hover {
+	background: transparent;
+}
+
+.ng-context-menu-item span.ui-icon {
+	overflow-x: visible;
+	overflow-y: visible;
+	background: transparent
+}
+
+.ui-menuitem-link span.ui-icon.ui-icon-triangle-1-s {
+	background: transparent !important;
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+	width: auto !important;
+	min-width: 120px !important;
+}
+
+li ul li.ui-menuitem-active>a {
+	color: $colorSecondary !important;
+}
+
+.ui-menuitem-text {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.ui-menuitem-text:HOVER {
+	color: $colorSecondary;
+}
+
+a.ui-submenu-link span {
+	font-family: $fontFamily;
+	color: $colorPrimary !important;
+}
+
+a.ui-submenu-link span:HOVER {
+	color: $colorSecondary !important;
+}
+
+/* altera a cor label menu-active */
+ul li.ui-menuitem-active>a {
+	color: $colorPrimary !important;
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+	margin-top: -2px !important;
+}
+
+.ui-menu .ui-menuitem-text {
+	margin: 0px 6px !important;
+	white-space: nowrap !important;
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+	margin-top: -2px !important;
+}
+
+ul li.ui-menuitem-active>a {
+	background-image: none !important;
+	background-color: transparent !important;
+}
+
+.ui-menu-child.ui-widget-content a {
+	color: $colorTertiary !important;
+}
+
+.ui-menu {
+	@include border-radius(4px);
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+    padding-left: 1.3em !important;
+    padding-right: 1.3em !important;
+}

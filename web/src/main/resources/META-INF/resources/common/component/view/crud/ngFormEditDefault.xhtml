@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:composite="http://java.sun.com/jsf/composite"
+>
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="btnGoBackVisible" default="true"/>
+		<composite:attribute name="btnSaveLabel" default="#{i18n['btn_action_save']}"/>
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+    <composite:implementation>
+        <style>
+            #btn-save {
+                margin-right: 9px;
+                margin-top: 0px;
+            }
+        </style>
+        <script>
+            //javascript function which scroll to the first message in page
+            function scrollToFirstMessage() {
+                $("html, body").animate({scrollTop: 0}, "slow");
+            }
+        </script>
+        <p:commandLink id="btn-goback" value="#{i18n['btn_action_goback']}" action="#{defaultMBean.findAction}"
+                       rendered="#{cc.attrs.btnGoBackVisible}" styleClass="ng-command-link" immediate="true" ajax="true"
+                       update=":ng-form:ng-panel-crud :messages"/>
+        <p:commandButton id="btn-save" widgetVar="btnSaveButton" action="#{defaultMBean.saveAndUpdateBean}"
+                         update=":ng-form:ng-panel-crud :messages" value="#{cc.attrs.btnSaveLabel}"
+                         styleClass="ng-ui-button" rendered="#{defaultMBean.hasPermission('EDIT')}"
+                         oncomplete="scrollToFirstMessage()" icon="fa fa-save"/>
+	</composite:implementation>
+</ui:composition>

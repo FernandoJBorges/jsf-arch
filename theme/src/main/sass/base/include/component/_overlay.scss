@@ -1,0 +1,6 @@
+.ui-widget-overlay {
+	background: $colorDisabled url("\#{resource['#{$primefaces-theme}:images/ui-bg_flat_0_aaaaaa_40x100.png']}") 50% 50% repeat-x;
+	opacity: 0.55;
+	filter: Alpha(Opacity =30);
+	background: $colorDisabled;
+}

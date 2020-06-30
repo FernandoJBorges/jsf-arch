@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:neogrid="http://java.sun.com/jsf/composite/common/component"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="titleView" required="true" />
+		<composite:attribute name="update" />
+		<composite:attribute name="titleViewBegin" default="#{defaultMBean.stateUpdate ? i18n['btn_action_change'] : i18n['btn_action_create']}" />
+		<composite:attribute name="icon" default="fa fa-save" />
+		<composite:attribute name="mbean" />
+		<composite:attribute name="actionGoBack" shortDescription="nome metodo action() botao voltar" />
+		<composite:attribute name="actionSubmit" shortDescription="nome metodo action() botao de submit" />
+		<composite:attribute name="renderedSubmit" default="true"/>
+		<composite:attribute name="labelSubmit" default="#{i18n['btn_action_save']}" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<script>
+				function setClickForHideState(button, titleView, btnPanel, dataPanel){
+					$(button).click(function() {
+						$(titleView).hide();
+						$(btnPanel).hide();
+						$(dataPanel).hide();
+					});
+				}
+
+				function transformId(jsfId){
+					return 	"#" + jsfId.replace(/:/g, "\\:");
+				}
+
+				function ngFormEditRenderStateHotfix(){
+					var btnGoBackId = transformId("#{cc.clientId}:#{cc.attrs.id}btn-goback");
+					var btnSaveId = transformId("#{cc.clientId}:#{cc.attrs.id}btn-save");
+					var titleView = transformId("#{cc.clientId}:ngTitleView:ng-panel-title-form-view");
+					var btnPanel = transformId("#{cc.clientId}:#{cc.attrs.id}-ng-panel-btn");
+					var dataPanel = $(btnPanel).next();
+
+					setClickForHideState(btnGoBackId, titleView, btnPanel, dataPanel);
+					setClickForHideState(btnSaveId, titleView, btnPanel, dataPanel);
+				}
+
+				<!-- FUNCTION AFTER SAVE SET PAGE SCROLLTOP -->
+				$(document).ready(function(){
+						$('.ng-ui-button').click(function(){
+							$('html, body').animate({scrollTop : 0},100);
+							return false;
+						});
+
+						ngFormEditRenderStateHotfix();
+				});
+		</script>
+		<neogrid:ngTitleView id="ngTitleView" titleView="#{cc.attrs.titleViewBegin} #{cc.attrs.titleView}" />
+		<p:outputPanel id="#{cc.attrs.id}-ng-panel-btn" style="text-align: right;border:0px;background:transparent;margin-top:2px;margin-right:19px">
+				<p:autoUpdate />
+				<p:commandLink id="#{cc.attrs.id}btn-goback" action="#{cc.attrs.mbean[cc.attrs.actionGoBack]}" value="#{i18n['btn_action_goback']}" update="#{cc.attrs.update}"  styleClass="ng-command-link" immediate="true"/>
+				<p:commandButton id="#{cc.attrs.id}btn-save" action="#{cc.attrs.mbean[cc.attrs.actionSubmit]}" update="#{cc.attrs.update}" rendered="#{cc.attrs.renderedSubmit}" value="#{cc.attrs.labelSubmit}" styleClass="ng-ui-button"  icon="#{cc.attrs.icon}" />
+		</p:outputPanel> 
+		<composite:insertChildren />
+	</composite:implementation>
+</ui:composition>

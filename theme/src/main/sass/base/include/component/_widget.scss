@@ -1,0 +1,42 @@
+.ui-widget-content {
+	border: 1px solid $colorDisabled;
+	background: $colorWhite url("\#{resource['#{$primefaces-theme}:images/ui-bg_flat_75_ffffff_40x100.png']}") 50% 50% repeat-x;
+	color: $colorTertiary;
+}
+
+.ui-widget-content a {
+	color: $colorTertiary;
+	text-decoration: none;
+}
+
+.ui-widget-header {
+	border: 1px solid $colorDisabled;
+	color: $colorTertiary;
+	font-family: $fontFamilyBold;
+	background: $colorOffWhite;
+}
+
+.ui-widget-header a {
+	color: $colorTertiary;
+}
+
+.ui-priority-primary, .ui-widget-content .ui-priority-primary,
+	.ui-widget-header .ui-priority-primary {
+	font-family: $fontFamilyBold;
+}
+
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,
+	.ui-widget-header .ui-priority-secondary {
+	opacity: .7;
+	filter: Alpha(Opacity =                         70);
+	font-weight: normal;
+}
+
+.ui-widget-shadow {
+	margin: -8px 0 0 -8px;
+	padding: 8px;
+	background: $colorDisabled url("\#{resource['#{$primefaces-theme}:images/ui-bg_flat_0_aaaaaa_40x100.png']}") 50% 50% repeat-x;
+	opacity: .3;
+	filter: Alpha(Opacity = 30);
+	@include border-radius(4px);
+}

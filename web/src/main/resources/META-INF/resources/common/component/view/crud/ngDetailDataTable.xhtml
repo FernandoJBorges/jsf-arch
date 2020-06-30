@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="updateGrid" default=":ng-form:ng-panel-crud :messages" />
+		<composite:attribute name="btnRenderEdit" type="java.lang.Boolean" default="true" />
+		<composite:attribute name="btnRenderRemove" type="java.lang.Boolean" default="true" />
+		<composite:attribute name="renderedBtnReport" type="java.lang.Boolean" default="true" />
+		<composite:attribute name="customAction" type="java.lang.Boolean" default="false" />
+	</composite:interface>
+
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="componentes/ngDetailDataTable.css" />
+		<p:outputPanel id="ng-panel-datatable" styleClass="ng-panel-datatable">
+		<!-- BEGIN DATATABLE -->
+		<p:dataTable 
+				var="row" 
+				rows="10"
+				lazy="true"
+				reflow="true"
+				paginator="true" 
+				id="ng-data-table" 
+				rowKey="#{row.uid}"
+				widgetVar="dataTable" 
+				selectionMode="single"
+				resizableColumns="true"
+				paginatorPosition="bottom"
+				value="#{defaultMBean.lazyModel}" 
+				rendered="#{defaultMBean.lazyModel.listSize > 0}"
+				emptyMessage="#{i18n['list.action.search.listEmpty']}" 
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="10,50,100,150,200"
+				>
+			<composite:insertChildren />
+				<p:ajax event="rowSelectCheckbox" listener="#{defaultMBean.rowSelectCheckbox}" partialSubmit="true"  update="@(.updateable-by-datatable)"  />
+				<p:ajax event="rowUnselectCheckbox" listener="#{defaultMBean.rowUnselectCheckbox}" partialSubmit="true"  update="@(.updateable-by-datatable)"  />
+				<p:ajax event="toggleSelect" listener="#{defaultMBean.toggleSelect}" partialSubmit="true"  update="@(.updateable-by-datatable)"  />
+			</p:dataTable>
+		</p:outputPanel>
+		<!-- DIALOG DE CONFIRMACAO -->
+		<ui:include src="ngDialogConfirmDelete.xhtml" />
+	</composite:implementation>
+</ui:composition>

@@ -1,0 +1,81 @@
+@import '../include/commons/vars';
+@import '../include/commons/mixins';
+
+
+.ng-selected-size-tille {
+	background: none repeat scroll 0 0 #fff;
+	border: 0 none;
+	padding: 0 1%;
+}
+
+.ng-table-total-reg {
+	color: $colorTertiary;
+}
+
+.ng-table-actions-container {
+	background: $colorWhite;
+	color: black;
+	width: 80px;
+	height: 36px !important;
+	font-family: $fontFamily;
+	font-size: 13px;
+	float: right;
+	@include border-radius(4px)
+}
+
+.ng-table-actions-container:hover {
+	background: $colorDisabled;
+	@include transition;
+}
+
+.ng-table-actions-container.ui-button-text-icon-left .ui-button-text {
+	padding-left: 1.7em;
+}
+
+.ui-g-11:first-child {
+	min-width: 200px
+}
+
+.ng-selected-action.ui-g {
+	width: 100%
+}
+
+.ng-selected-action .ui-g-1 {
+	padding: 5px 0px;
+}
+
+.ng-selected-action .ui-g-11 {
+	padding: 0px;
+}
+
+.ng-dyna-button-action {
+	width: 130px;
+}
+
+.ng-selected-toggler {
+	margin-left: 5px;
+}
+
+.ng-legend {
+	max-width: 75px;
+	cursor: pointer;
+	color: $colorSecondary;
+	position: relative;
+}
+
+.ng-legend:after {
+	border-right: 1px solid $colorDisabled;
+	bottom: 0;
+	content: "";
+	height: 50%;
+	position: absolute;
+	right: 1%;
+	top: 8px;
+}
+
+.ng-legend a {
+	margin: 2px;
+	color: $colorSecondary;
+	font-family: $fontFamily;
+	text-decoration: none;
+}

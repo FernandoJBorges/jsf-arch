@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="renderedBtnExportXls" type="java.lang.Boolean" default="true" />
+		<composite:attribute name="renderedBtnExportPdf" type="java.lang.Boolean" default="true" />
+		<composite:attribute name="showLegend" type="java.lang.Boolean" default="false" />
+		<composite:attribute name="showActionsButton" type="java.lang.Boolean" default="false" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+	
+	<h:outputStylesheet library="css" name="componentes/ngSelectActions.css" />
+	<f:verbatim>
+				<!--[if lte IE 8]>
+					<link type="text/css" rel="stylesheet" href="#{request.contextPath}/javax.faces.resource/ngSelectActionsHack.css.jsf?ln=css" />
+		    	<![endif]-->
+    </f:verbatim>
+	<p:outputPanel styleClass="ng-panel-action">
+	<p:outputPanel id="ng-selected-actions-panel" styleClass="updateable-by-datatable">
+	
+	<p:outputPanel id="ng-selected-action-panel-empty" styleClass="ng-emptyList clearfix" rendered="#{empty defaultMBean.lazyModel or defaultMBean.lazyModel.listSize == 0}">
+	<div class="ui-g">
+		<div class="ui-g-12">
+			<p:graphicImage library="common" name="neogrid/imgs/#{empty defaultMBean.lazyModel ? 'lbl-findWarning.png' : 'lbl-findWarningEmpty.png'}" /> 
+			#{empty defaultMBean.lazyModel ? i18n['list.action.search'] : i18n['list.action.search.listEmpty']}
+		</div>
+	 </div>
+	</p:outputPanel>
+	
+	<p:outputPanel styleClass="ng-selected-size-tille" rendered="#{defaultMBean.lazyModel.listSize > 0}">
+	<div class="ui-g ng-selected-action">
+			 <div class="ui-g-11">
+				 <p:outputPanel class="ui-g-2 ng-legend" rendered="#{cc.attrs.showLegend}">
+				 	<i class="fa fa-info">
+						<p:commandLink onclick="PF('dialogLegend').show();" value="#{i18n['ng.label.legend']}" />
+				 	</i>
+				 </p:outputPanel> 
+				 <div class="ui-g-10">
+					  <p:outputLabel id="listSize" value="#{defaultMBean.lazyModel.listSize}  #{i18n['list.count.size.msg']}" />
+				 </div> 
+			 </div>
+			 <div class="ui-g-1">
+			 <p:commandButton id="ng-dyna-button-action" type="button" value="#{i18n['label.title.exporter.actions']}" icon="fa fa-caret-down" rendered="#{cc.attrs.showActionsButton}"
+											styleClass="ng-table-actions-container ng-command-button" title="#{i18n['tooltilp.column.actions.click']}" />
+							<p:menu overlay="true" trigger="ng-dyna-button-action" my="left top" at="left bottom" styleClass="ng-dyna-button-action" rendered="#{cc.attrs.showActionsButton}">
+												<p:menuitem value="#{i18n['label.title.exporter.excel']}" 
+															icon="ng-btn-actions-select fa fa-file-excel-o"
+															styleClass="ng-context-menu-item"
+															 ajax="false" immediate="true" 
+															 rendered="#{cc.attrs.renderedBtnExportXls}">
+															<p:dataExporter type="xls" target=":ng-form:ng-detail-dataTable:ng-data-table" fileName="#{defaultMBean.exportFileTitle()}" postProcessor="#{defaultMBean.postExportProcessXLS}" />
+												</p:menuitem>
+												<p:menuitem value="#{i18n['label.title.exporter.pdf']}" 
+															icon="ng-btn-actions-select fa fa-file-pdf-o"
+															styleClass="ng-context-menu-item"
+															 ajax="false" immediate="true" rendered="#{cc.attrs.renderedBtnExportPdf}">
+															<p:dataExporter type="pdf" target=":ng-form:ng-detail-dataTable:ng-data-table" fileName="#{defaultMBean.exportFileTitle()}" />
+												</p:menuitem>
+												<composite:insertChildren />
+												
+							</p:menu>
+							<p:commandButton id="toggler" type="button" icon="ui-icon-calculator" styleClass="ng-selected-toggler" title="Customizar Visualização" rendered="false" />
+							<p:columnToggler datasource=":ng-form:ng-detail-dataTable:ng-data-table" trigger="toggler" rendered="false" />
+			 
+			 </div>
+	</div>
+	</p:outputPanel>
+	</p:outputPanel>
+	</p:outputPanel>
+	</composite:implementation>
+</ui:composition>

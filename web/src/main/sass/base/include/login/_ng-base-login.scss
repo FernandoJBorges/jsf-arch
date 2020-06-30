@@ -1,0 +1,166 @@
+@font-face {
+	font-family: "Raleway";
+	@include font-face(regular,400);
+}
+
+@font-face {
+	font-family: "Raleway-Bold";
+	@include font-face(bold,700);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+	font-family: $fontFamily;
+}
+
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	main, nav, section, summary {
+	display: block;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: url("../javax.faces.resource/img/header/bg-login.png.jsf?ln=common");
+	background-position: center top;
+	background-repeat: repeat-x;
+	color: $colorTertiary;
+	font-family: $fontFamily;
+	font-size: 12px;
+}
+/* Default Fonts
+*/
+#ng-login-wrapper {
+	width: 100%;
+	min-width: 900px;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+
+/* Header
+-----------------------------------------------------------------------------*/
+#ng-login-header {
+	height: 74px;
+	background: #00263c;
+}
+
+/* Middle
+-----------------------------------------------------------------------------*/
+#ng-login-content {
+	padding: 100px 0 100px;
+	position: fixed;
+	left: 50%;
+	margin-left: -460px;
+}
+
+/* Footer
+-----------------------------------------------------------------------------*/
+#ng-login-footer {
+	bottom: 0;
+	background: $colorWhite;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+/* content
+-----------------------------------------------------------------------------*/
+.ng-content-frm-login {
+	width: 970px;
+}
+
+.ng-content-frm-login-left {
+	width: 36%;
+	float: left;
+	padding-left: 120px;
+	margin-top: 25px;
+	border-right: 1px solid #BEBEBE;
+}
+
+.ng-content-frm-login-right {
+	width: 305px;
+	float: left;
+	margin-top: 17px;
+	padding-left: 58px;
+}
+
+/* coluna central de atendimento */
+.ng-login-flag {
+	margin-top: 10px;
+}
+
+.ng-login-title {
+	color: #393939;
+	font-size: 18px;
+	line-height: 120%;
+}
+
+.ng-login-title label{
+	font-family: $fontFamilyBold;
+}
+
+.ng-login-options-item {
+	border-bottom: 1px solid #BEBEBE;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.ng-login-text {
+	font-size: 11px;
+	color: #5F5F5F;
+}
+
+.ng-login-options-item {
+	border-bottom: 1px solid #BEBEBE;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.ng-login-options-item a {
+	color: #5f5f5f;
+	text-decoration: none;
+}
+
+.ng-login-options-item a:hover {
+	text-decoration: underline;
+}
+
+.ng-login-label-trad {
+	margin-left: 43px;
+	margin-top: -25px;
+}
+
+.link-lost-key {
+	-moz-text-decoration-color: -moz-use-text-color;
+	-moz-text-decoration-line: underline;
+	-moz-text-decoration-style: solid;
+	color: #5F5F5F;
+	float: right;
+	font-size: 11px;
+	margin-right: 39px;
+}
+
+.ng-login-info-screen {
+	font-family: $fontFamilyBold;
+	font-size: 12px;
+}
+
+button#btnLogin{
+	float:left;
+}
+
+div#auxiliaryText{
+	width: 70%;
+    float: left;
+    margin: 10px;
+}

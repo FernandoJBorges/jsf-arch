@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+	<!-- INTERFACE -->
+	<composite:interface>
+		<!-- titulo da view -->
+		<composite:attribute name="message" required="true" />
+		<!-- messageType [info, error] -->
+		<composite:attribute name="messageType" default="error" />
+	</composite:interface>
+	
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+	<!-- titulo dos forms -->
+	 <div class="ng-header-message">
+		<div aria-live="polite" class="ui-messages ui-widget" id="messages">
+		<div class="ui-messages-#{cc.attrs.messageType}  ui-corner-all">
+		
+		<a onclick="$(this).parent().slideUp();return false;" class="ui-messages-close" href="#">
+			<span class="ui-icon ui-icon-close"></span>
+		</a>
+		<span class="ui-messages-#{cc.attrs.messageType}-icon"></span>
+			<ul>
+				<li>
+					<span class="ui-messages-#{cc.attrs.messageType}-summary">
+					  <p:outputLabel value="#{cc.attrs.message}" escape="false" />	
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	
+	
+	
+	</composite:implementation>
+</ui:composition>

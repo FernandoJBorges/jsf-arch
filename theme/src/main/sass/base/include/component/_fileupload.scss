@@ -1,0 +1,60 @@
+.ui-fileupload .start {
+	display: none;
+}
+
+.ui-fileupload .cancel {
+	display: none;
+}
+
+.ui-fileupload .progress {
+	display: none;
+}
+
+.ui-fileupload {
+	border: none;
+}
+
+.fileupload-buttonbar .fileinput-button .ui-icon-plusthick {
+	border: none !important;
+	display: none !important;
+}
+
+.fileupload-buttonbar .fileinput-button  .ui-button-text {
+	border: none !important;
+	padding-left: 1em !important;
+}
+
+.ui-fileupload .fileupload-buttonbar {
+	border: none !important;
+	background: transparent;
+	background-color: transparent;
+	float: left;
+}
+
+.fileupload-content {
+	border: none !important;
+	border-bottom-left-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+	background: transparent !important;
+	background-color: transparent !important;
+	float: right;
+}
+
+.ui-fileupload-content .ui-icon.ui-icon-close {
+	background-position: -50px 2px !important;
+}
+
+.ui-fileupload-content .ui-icon {
+	background-attachment: scroll !important;
+	background-clip: border-box !important;
+	background-color: rgba(0, 0, 0, 0) !important;
+	background-image: url("\#{resource['#{$primefaces-theme}:images/sprite-notification-icons.png']}") !important;
+	background-origin: padding-box !important;
+	background-position: 0 0 !important;
+	background-repeat: no-repeat !important;
+	background-size: auto auto !important;
+}
+
+.ui-fileupload-content.ui-widget-content.ui-corner-bottom {
+	border: 1px solid $colorDisabled;
+}

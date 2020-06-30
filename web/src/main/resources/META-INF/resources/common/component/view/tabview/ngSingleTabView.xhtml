@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<!-- INTERFACE -->
+	<composite:interface>		
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+	    <h:outputStylesheet library="css" name="componentes/ngTabview.css" />	       	
+		<p:outputPanel id="ngSingleTabView" styleClass="tabcontainner">		    
+              <composite:insertChildren />            
+		</p:outputPanel>		
+	</composite:implementation>
+</ui:composition>

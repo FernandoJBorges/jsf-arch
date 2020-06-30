@@ -1,0 +1,11 @@
+.ng-ajax-status.ui-shadow {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.ui-shadow {
+	-moz-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2) !important;
+	-webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2) !important;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2) !important;
+}

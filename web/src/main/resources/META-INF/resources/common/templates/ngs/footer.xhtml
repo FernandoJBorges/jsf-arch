@@ -1,0 +1,19 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component">
+	<h:form id="ng-form-footer" prependId="false">
+		<div id="ngPageFooterText" class="ng-page-footer-text">
+			<p:outputLabel value="©#{principalMB.year} #{i18n.ngNeogrid} | #{i18n.ngFooterResv} |" />
+			<p:commandLink styleClass="ng-page-footer" value="#{i18n.ngFooterCond}" />
+			<p:outputLabel value="| #{i18n['footer.text.screen']} | #{i18n.ngFooterFiscalVersao} " />
+			<c:if test="#{userSessionInfo.establishmentsEnable}">
+				<p:outputLabel value="#{principalMB.appVersion} - #{i18n[principalMB.environment]} " />
+			 </c:if>
+		</div>
+	</h:form>
+	<h:outputScript library="common" name="js/primefaces/selectCheckboxMenu.js" />
+</ui:fragment>

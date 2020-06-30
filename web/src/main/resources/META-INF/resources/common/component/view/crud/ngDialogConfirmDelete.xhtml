@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<p:dialog id="dlConfirmDeleteBean"
+			class="ng-dialog-header"
+			styleClass="ngListValuesTableStyle"
+			modal="true"
+			widgetVar="dlConfirmDeleteBean"
+			draggable="false"
+			resizable="false"
+			minHeight="40"
+			width="300">
+			
+		<p:outputPanel class="ng-dialog-header">
+			<p:outputLabel value="#{i18n['popup.msg.info']}" />
+		</p:outputPanel>
+		<p:outputPanel id="ngMessageDialogContainner" styleClass="ng-containner">
+			<p:outputLabel id="ngMessageDialogContainnerTitle" value="#{i18n[defaultMBean.msgDialogConfirmDelete]}" />
+		</p:outputPanel>
+		<div class="ng-dialgo-btn">
+			<p:commandButton id="ng-btn-confir" 
+							update="#{cc.attrs.updateGrid}"
+							value="#{i18n['btn_action_yes']}" 
+							styleClass="ng-ui-button"
+							action="#{defaultMBean.delete}"
+							onclick="PF('dlConfirmDeleteBean').hide();" 
+							type="submit" />
+			<p:commandButton id="ng-btn-cancel" 
+							value="#{i18n['btn_action_no']}"
+							styleClass="ng-ui-button"
+							onclick="PF('dlConfirmDeleteBean').hide();" />
+		</div>
+	</p:dialog>
+</ui:composition>

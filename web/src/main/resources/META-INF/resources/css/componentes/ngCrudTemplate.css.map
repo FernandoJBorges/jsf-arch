@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB,CACf,UAAU,CAAE,sBAAsB,CAClC,WAAW,CAAE,cAAc,CAC3B,MAAM,CAAE,cAAc",
+"sources": ["../../../../../sass/base/componentes/ngCrudTemplate.scss"],
+"names": [],
+"file": "ngCrudTemplate.css"
+}

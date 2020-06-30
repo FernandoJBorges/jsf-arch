@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite">
+	
+	<!-- INTERFACE -->
+	<cc:interface componentType="ngListValuesComp">
+		<cc:attribute name="value" shortDescription="Código do objeto" />
+		<cc:attribute name="placeholder" shortDescription="Código do objeto" />
+		<cc:attribute name="updateField" shortDescription="Código do objeto" />
+		<cc:attribute name="enableSelection" shortDescription="Código do objeto" default="false" />
+	</cc:interface>
+	
+	<!-- IMPLEMENTATION -->
+	<cc:implementation>
+	<h:outputStylesheet library="css" name="componentes/ngListValuesComp.css" />
+		<p:inputText id="#{cc.id}idInput" value="#{cc.inputCodT}" binding="#{cc.inputCod}" readonly="true" style="margin-right:6px" placeholder="#{cc.attrs.placeholder}" />
+		<p:commandButton icon="fa fa-search" styleClass="ng-ui-button" actionListener="#{cc.findDataTable}" immediate="true" oncomplete="PF('#{cc.id}editDialog').show();" update="#{cc.id}editDialog" disabled="#{cc.attrs.enableSelection}" />
+		<p:commandLink id="#{cc.id}btnClear" styleClass="ng-command-link fa fa-eraser marginTopLinkErase" value="#{i18n['btn_action_erase']}" actionListener="#{cc.clean}" 
+						update="#{cc.id}idInput" disabled="#{cc.attrs.enableSelection}" />
+		<!-- DIALOG LIST OF VALUES -->
+		<p:dialog id="#{cc.id}editDialog" widgetVar="#{cc.id}editDialog" style="background:#fff" width="800" resizable="false" draggable="true" showEffect="fade" hideEffect="fade" modal="true">
+			<!-- FILTRO insertChildren -->
+			<cc:insertChildren />
+			<div id="ngListValuesAling" style="width: 100%;height: 36px;padding:5px">
+				<span style="float: right;">
+					<!-- BTN PESQUISAR -->
+					<p:commandButton id="ngBtnSearchListValues" styleClass="ng-ui-button" value="#{i18n['btn_action_search']}" icon="fa fa-search"  immediate="true"  actionListener="#{cc.findDataTable}" update="#{cc.id}dataTable" style="float:right" />
+				    <!-- BTN SELECIONAR -->
+					<p:commandButton id="ngBtnSelectListValues" styleClass="ng-ui-button" icon="fa fa-check-square" value="#{i18n['btn_action_select']}" actionListener="#{cc.selectDataTableRow}" oncomplete="PF('#{cc.id}editDialog').hide()"  update="#{cc.attrs.updateField}:#{cc.id}idInput"/>
+				</span>
+			</div>
+			<!-- GRID -->
+			<p:dataTable id="#{cc.id}dataTable" modal="true" var="data" value="#{cc.lazyModel}" selection="#{cc.itemSelectDataTable}" style="margin-top:10px" styleClass="ngListValuesTableStyle"
+				selectionMode="single" rowKey="#{data.uid}" paginator="true" rows="5" rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+				<!-- COLUMS DINAMIC -->
+				<p:columns value="#{cc.columns}" var="column" columnIndexVar="colIndex">
+					<f:facet name="header">
+						<h:outputText value="#{column.header}" />
+					</f:facet>
+					<h:outputText value="#{data[column.property]}" />
+				</p:columns>
+				 <p:column style="width:10px;text-align: center" rendered="#{defaultMBean.removeBean}" exportable="false">
+		 			<p:commandLink styleClass="ng-page-footer" action="#{cc.selectDataTableRow}"   onclick="PF('#{cc.id}editDialog').hide()" update="#{cc.attrs.updateField}:#{cc.id}idInput" partialSubmit="true">
+							<i class="fa fa-check-square"></i>
+							<f:setPropertyActionListener value="#{data}" target="#{cc.itemSelectDataTable}" />
+					</p:commandLink>
+			</p:column>
+			</p:dataTable>
+		</p:dialog>
+	</cc:implementation>
+</ui:composition>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:p="http://primefaces.org/ui">
+				<ui:param name="searchByEnter" value="#{searchByEnter != null ? searchByEnter : false}" />
+					<h:outputStylesheet library="css" name="componentes/ngViewSearchBtn.css" />
+					<f:event listener="#{defaultMBean.postValidateFilter}" type="postValidate" />
+						<p:commandButton id="btn-search" 
+										ajax="true"
+										icon="fa fa-search" 
+										styleClass="ng-ui-button btn-search" 
+										value="#{i18n['btn_action_search']}"
+										action="#{defaultMBean.findByFilters}" 
+										update="@(.document-filter-panel) :messages" 
+										disabled="#{btnDisabled}" />
+						<p:commandLink 	id="btn-clear" 
+									 	ajax="true"
+									 	immediate="true"
+									 	resetValues="true"
+										action="#{defaultMBean.clear}" 
+										value="#{i18n['btn_action_erase']}" 
+										styleClass="ng-eraser ng-command-link" 
+									 	onclick="$('#ng-btn-open-accordion').click()"  
+									 	update=":ng-form:ng-panel-crud :ng-panel-crud-dialog :messages"
+									 	global="false" />
+
+							<p:outputPanel rendered="#{searchByEnter and !btnDisabled}">
+								<p:defaultCommand target="btn-search" />
+							</p:outputPanel>
+					<h:outputScript library="common" name="js/componentes/ngViewSearchBtn.js" />
+</ui:composition>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<!-- INTERFACE -->
+	<composite:interface>	
+		<composite:attribute name="idDialog" required="true" />
+	</composite:interface>
+	
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+	<div id="ng-termo-uso-close" class="ng-termo-uso-close" onclick="PF('#{cc.attrs.idDialog}').hide();">
+		<div class="ng-termo-uso-close-btn"></div>
+	</div>
+		<div id="ng-dialog-container"  class="ng-dialog-container">
+			<p:commandButton value="Sim" actionListener="#{defaultMBean.removeBean}" type="submit" oncomplete="PF('#{cc.attrs.idDialog}').hide();"></p:commandButton>
+			<p:commandButton value="Cancelar" onclick="PF('#{cc.attrs.idDialog}').hide();" type="submit"></p:commandButton>
+		</div>
+	</composite:implementation>
+</ui:composition>

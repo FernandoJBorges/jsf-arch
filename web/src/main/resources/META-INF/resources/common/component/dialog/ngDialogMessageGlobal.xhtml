@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<composite:interface>
+		<composite:attribute name="widgetVar" required="true" />
+		<composite:attribute name="header" />
+		<composite:attribute name="titleBtnConfirm" default="#{i18n['btn_action_yes']}" />
+		<composite:attribute name="titleBtnCancel" default="#{i18n['btn_action_no']}" />
+		<composite:attribute name="btnActionConfirm" method-signature="java.lang.String action()" required="true" />
+		<composite:attribute name="btnActionCancel" method-signature="java.lang.String action()" />
+		<composite:attribute name="enableBtnAction" default="false" />
+		<composite:attribute name="closable" default="true" />
+		<composite:attribute name="updateGrid" default="@this" />
+		<composite:attribute name="viewMessageDialog" default="true" />
+	</composite:interface>
+	<composite:implementation>
+		<ui:param name="widgetVar" value="#{cc.attrs.widgetVar}" />
+		<p:dialog id="#{widgetVar}" 
+					widgetVar="#{widgetVar}" 
+					modal="true" 
+				  	draggable="false" 
+				  	closable="#{cc.attrs.closable}" 
+				  	resizable="false" 
+				  	responsive="true">
+				  	
+			<ui:include src="header.xhtml">
+					 	<ui:param name="header" value="#{cc.attrs.header}" />
+					 	<ui:param name="renderedHeader" value="#{cc.attrs.viewMessageDialog}" />
+			</ui:include>
+			<p:outputPanel styleClass="ng-containner ng-containner-dialog">
+						<composite:insertChildren />
+			</p:outputPanel>
+			<div class="ng-dialgo-btn">
+				<p:commandButton id="#{widgetVar}-ng-btn-confir" value="#{cc.attrs.titleBtnConfirm}" styleClass="ng-ui-button" action="#{cc.attrs.btnActionConfirm}" type="submit"  update="#{cc.attrs.updateGrid} :messages" />
+				<p:commandButton id="#{widgetVar}-ng-btn-cancel" value="#{cc.attrs.titleBtnCancel}" styleClass="ng-ui-button" onclick="PF('#{widgetVar}').hide();" immediate="true" rendered="#{!cc.attrs.enableBtnAction}" />
+				<p:commandButton id="#{widgetVar}-ng-btn-cancel-action" value="#{cc.attrs.titleBtnCancel}" styleClass="ng-ui-button" action="#{cc.attrs.btnActionCancel}" onclick="PF('#{widgetVar}').hide();" immediate="true" rendered="#{cc.attrs.enableBtnAction}" />
+			</div>
+		</p:dialog>
+	</composite:implementation>
+</ui:composition>
+
+
+   
+		 					

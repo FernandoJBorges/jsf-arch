@@ -1,0 +1,29 @@
+.ui-inputswitch-off, .ui-widget-content .ui-inputswitch-off,
+	.ui-widget-header .ui-inputswitch-off {
+	color: $colorWhite !important;
+}
+
+.ui-inputswitch-on, .ui-widget-content .ui-inputswitch-on,
+	.ui-widget-header .ui-inputswitch-on {
+	background: #5cb85c !important;
+	color: $colorWhite !important;
+}
+
+.ui-inputswitch-handle, .ui-widget-content .ui-inputswitch-handle,
+	.ui-widget-header .ui-inputswitch-handle {
+	background: -moz-linear-gradient(center top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0)) repeat scroll 0 0 #c4c4c4;
+	border: 1px solid #a8a8a8;
+	color: $colorTertiary;
+	font-family: $fontFamilyBold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-inputswitch.ui-widget.ui-widget-content {
+	border: 1px solid $colorDisabled !important;
+}
+
+.ui-inputswitch-off, .ui-widget-content .ui-inputswitch-off,
+	.ui-widget-header .ui-inputswitch-off {
+	background: $colorPrimary !important;
+}

@@ -1,0 +1,10 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="httpError.xhtml">
+	<ui:define name="httpMessage">
+		<p:outputLabel id="http-error-404" value="#{i18n['msg.error.page.notfound.404']}" styleClass="error-message" />
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,127 @@
+@import '../include/commons/vars';
+@import '../include/commons/mixins';
+
+.simple-datatable-empty-list {
+	border: dashed 1px hsl(0, 0%, 80%);
+	margin: 10px 10px !important;
+	padding: 20px !important;
+	@include border-radius(4px);
+}
+
+.ng-panel-simple-datatable-empty-message-icon {
+	font-size: 22px;
+	margin-right: 10px;
+}
+
+.icon-area {
+	position: relative;
+	display: inline-block;
+	width: 2.5em;
+	height: 2.5em;
+	line-height: 2.5em;
+	vertical-align: middle;
+}
+
+.icon-area .icon-search, .icon-area .icon-warning-sign {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.icon-area .icon-search {
+	line-height: inherit;
+	font-size: 2.2em;
+	color: #999999;
+}
+
+.icon-area .icon-warning-sign {
+	font-size: 1.2em;
+	top: 15px;
+	left: -4px;
+	color: $colorSecondary;
+}
+
+.ng-table-container {
+	padding-top: 50px;
+	position: relative;
+}
+
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.simple-datatable-empty-list {
+	background: transparent;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	border-bottom-color: hsl(0, 0%, 80%);
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+	border-image-outset: 0 0 0 0;
+	border-image-repeat: stretch stretch;
+	border-image-slice: 100% 100% 100% 100%;
+	border-image-source: none;
+	border-image-width: 1 1 1 1;
+	border-left-color-ltr-source: physical;
+	border-left-color-rtl-source: physical;
+	border-left-color-value: hsl(0, 0%, 80%);
+	border-left-style-ltr-source: physical;
+	border-left-style-rtl-source: physical;
+	border-left-style-value: dashed;
+	border-left-width-ltr-source: physical;
+	border-left-width-rtl-source: physical;
+	border-left-width-value: 1px;
+	border-right-color-ltr-source: physical;
+	border-right-color-rtl-source: physical;
+	border-right-color-value: hsl(0, 0%, 80%);
+	border-right-style-ltr-source: physical;
+	border-right-style-rtl-source: physical;
+	border-right-style-value: dashed;
+	border-right-width-ltr-source: physical;
+	border-right-width-rtl-source: physical;
+	border-right-width-value: 1px;
+	border-top-color: hsl(0, 0%, 80%);
+	border-top-style: dashed;
+	border-top-width: 1px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	text-align: center;
+	color: $colorTertiary;
+}
+
+.simple-datatable-empty-list img {
+	vertical-align: middle;
+}
+
+.ng-simple-data-table.ui-datatable thead th,
+.ng-simple-data-table.ui-datatable tbody td,
+.ng-simple-data-table.ui-datatable tfoot td,
+.ng-simple-data-table.ui-datatable tfoot th {
+	padding-left: 5px !important;
+}
+
+.ng-simple-data-table .ui-state-default{background: $colorOffWhite}

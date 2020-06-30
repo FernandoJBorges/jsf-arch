@@ -1,0 +1,15 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<p:graphicImage id="ng-logo-empresa" 
+					library="common" 
+					alt="Neogrid" 
+					title="Neogrid"  
+					name="neogrid/imgs/logo-neogrid.png" 
+					styleClass="logo-neogrid" 
+					onclick="document.location.href ='#{request.contextPath}/views/pages/dashboard.jsf'"
+					/>
+	<p:outputPanel styleClass="header-label">
+		<p:outputLabel value="#{i18n['general_app_name']}" />
+	</p:outputPanel>
+</ui:fragment>

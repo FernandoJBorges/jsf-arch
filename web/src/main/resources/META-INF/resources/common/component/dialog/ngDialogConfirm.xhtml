@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<composite:interface>
+		<composite:attribute name="widgetVar" required="true" />
+		<composite:attribute name="header" />
+		<composite:attribute name="titleBtnConfirm" default="#{i18n['btn_action_yes']}" />
+		<composite:attribute name="titleBtnCancel" default="#{i18n['btn_action_no']}" />
+		<composite:attribute name="btnActionConfirm" method-signature="java.lang.String action()" required="true" />
+		<composite:attribute name="btnActionCancel" method-signature="java.lang.String action()" />
+		<composite:attribute name="enableBtnAction" default="false" />
+		<composite:attribute name="updateGrid" default="@this" />
+		<composite:attribute name="messageGlobal" default="false" />
+		<composite:attribute name="width" default="350"/>
+	</composite:interface>
+	<composite:implementation>
+		<ui:param name="widgetVar" value="#{cc.attrs.widgetVar}" />
+		<p:dialog 	id="#{widgetVar}" 
+					widgetVar="#{widgetVar}" 
+					modal="true" 
+					draggable="false" 
+					resizable="false" 
+					responsive="true"
+					width="#{cc.attrs.width}">
+						<p:messages id="#{widgetVar}Message" rendered="#{!cc.attrs.messageGlobal}" />
+						
+						<ui:include src="header.xhtml">
+						 	<ui:param name="header" value="#{cc.attrs.header}" />
+						 	<ui:param name="renderedHeader" value="true" />
+						</ui:include>
+						
+						<p:outputPanel styleClass="ng-containner ng-containner-dialog">
+								<composite:insertChildren />
+						</p:outputPanel>
+						<div class="ng-dialgo-btn">
+								<p:commandButton	type="submit"  
+													styleClass="ng-ui-button" 
+													id="#{widgetVar}-ng-btn-confir" 
+													value="#{cc.attrs.titleBtnConfirm}" 
+													action="#{cc.attrs.btnActionConfirm}" 
+													update="#{cc.attrs.updateGrid} #{widgetVar}Message"
+													onsuccess="PrimeFaces.scrollTo('ng-page-content')" 
+													rendered="#{!cc.attrs.messageGlobal}"
+													/>
+								<p:commandButton	type="submit"  
+													styleClass="ng-ui-button" 
+													id="#{widgetVar}-ng-btn-confir-message" 
+													value="#{cc.attrs.titleBtnConfirm}" 
+													action="#{cc.attrs.btnActionConfirm}" 
+													update="#{cc.attrs.updateGrid} :messages"
+													onsuccess="PrimeFaces.scrollTo('ng-page-content')" 
+													rendered="#{cc.attrs.messageGlobal}"
+													/>
+								<p:commandButton  	id="#{widgetVar}-ng-btn-cancel" 
+													value="#{cc.attrs.titleBtnCancel}" 
+													styleClass="ng-ui-button" 
+													onclick="PF('#{widgetVar}').hide();" 
+													immediate="true" 
+													rendered="#{!cc.attrs.enableBtnAction}" />
+								<p:commandButton 	id="#{widgetVar}-ng-btn-cancel-action" 
+													value="#{cc.attrs.titleBtnCancel}" 
+													styleClass="ng-ui-button" 
+													action="#{cc.attrs.btnActionCancel}" 
+													onclick="PF('#{widgetVar}').hide();" 
+													immediate="true" 
+													rendered="#{cc.attrs.enableBtnAction}" />
+						</div>
+		</p:dialog>
+	</composite:implementation>
+</ui:composition>
+
+
+   
+		 					

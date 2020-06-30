@@ -1,0 +1,44 @@
+
+/**
+ * Definition of the mixin, that could be included multiple times in CSS style definitions.
+ * Some browser support the standard 'border-radius' option; other browsers support it only though vendor-specific
+ * prefixes. With this mixin the SCSS defining customer layout stays clean.
+ */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin padding($padding) {
+	padding: $padding;
+}
+
+@mixin padding-top-right-bottom-left ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+@mixin margin($margin) {
+	margin: $margin;
+}
+
+@mixin margin-top-right-bottom-left ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+@mixin transition() {
+  	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}
+
+@mixin resource-image($image) {
+		background-image: url("\#{resource['#{$primefaces-theme}:images/#{$image}']}") no-repeat !important;
+}

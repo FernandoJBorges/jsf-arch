@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<composite:interface>
+		<composite:attribute name="value" required="true" />
+	</composite:interface>
+	<composite:implementation>
+		<h:outputText id="#{cc.id}" value="#{cc.attrs.value}">
+					  <f:converter converterId="dateTimeFormatteWithGMT" />
+		</h:outputText>
+	</composite:implementation>
+</ui:composition>

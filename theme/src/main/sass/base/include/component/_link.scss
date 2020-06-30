@@ -1,0 +1,92 @@
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited
+	{
+	text-decoration: none;
+}
+
+.ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link,
+	.ui-state-hover a:visited, .ui-state-focus a, .ui-state-focus a:hover,
+	.ui-state-focus a:link, .ui-state-focus a:visited {
+	color: $colorTertiary;
+	text-decoration: none;
+}
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited
+	{
+	text-decoration: none;
+}
+
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,
+	.ui-widget-header .ui-state-highlight a {
+	color: $colorTertiary;
+}
+
+.ng-link {
+	color: $colorSecondary !important;
+}
+
+.ng-eraser.ng-command-link {
+	margin-left: -3px;
+	margin-top: 3px;
+}
+
+.ng-eraser.ng-command-link {
+	color: $colorSecondary;
+}
+
+.ng-eraser.ng-command-link::before {
+	content: "";
+	font-size: 20px;
+	color: $colorSecondary;
+	margin-right: 5px;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.ng-command-link {
+	-moz-text-decoration-color: -moz-use-text-color;
+	-moz-text-decoration-line: none;
+	-moz-text-decoration-style: solid;
+	display: inline-block;
+	font-size: 14px;
+	height: 36px;
+	line-height: 31px;
+	vertical-align: middle;
+	margin: 0px 8px 1px 4px;
+	color: $colorSecondary;
+}
+
+.ng-command-link {
+	text-decoration: none;
+}
+
+.ng-command-link:hover {
+	text-decoration: underline;
+}
+
+.ng-command-link:before, .ng-command-link:after {
+	text-decoration: underline;
+}
+
+.ng-command-link:before {
+	content: "\003c";
+	text-decoration: none;
+	margin-right: 5px;
+	display: inline-block;
+	zoom: 1;
+	font-size: 20px;
+}
+
+.ng-command-link:before, .ng-command-link:after, .ng-command-link:hover:before,
+	.ng-command-link:hover:after {
+	text-decoration: none;
+}
+
+.ng-command-link.ui-widget-content a {
+	line-height: 30px;
+	margin-left: 4px;
+}
+
+a {
+	outline: none;
+	cursor: pointer;
+}

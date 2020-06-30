@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<!-- INTERFACE -->
+	<composite:interface />
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+			<ol id="menuHelpConfiguration">
+				<li>
+					<a href="#" class="lvl-first">
+						<span class="fa fa-question"></span>
+					</a>
+					<div class="lvl-second">
+						<ol class="lvl-second-content">
+						    <h:panelGroup rendered="#{menuConfigurationMB.visibleHelpContent(i18n['general_configurarion_menu_content'])}">
+							    <li class="option">
+	                            <p:commandLink action="#{menuConfigurationMB.openHelpContent}" target="_black">
+	                                    #{i18n['general_configurarion_menu_content']}
+	                            </p:commandLink>
+	                            </li>
+                            </h:panelGroup>
+							<li class="option">
+								<p:commandLink action="#{menuConfigurationMB.windowOpen}" target="_black">
+												#{i18n['general_configurarion_menu_release_notes']}
+								</p:commandLink>
+							</li>
+						</ol>
+					</div>
+				</li>
+			</ol>
+			<ol id="menuConfiguration">
+				<li>
+					<a href="#" class="lvl-first">
+					<span class="fa fa-cog"></span>
+					</a>
+					<div class="lvl-second">
+						<ol class="lvl-second-content">
+							<li class="option">
+								#{userSessionInfo.currentUser.role.name}
+								<span id="ngHeaderUserCompany" class="observation">
+									<p:outputLabel value="#{menuConfigurationMB.username}" />
+									<br/>
+									<p:outputLabel value="#{userSessionInfo.currentUser.email}" title="#{userSessionInfo.currentUser.email}" rendered="#{userSessionInfo.currentUser.email != null}" styleClass="email"/>
+								</span>
+							</li>
+							<li class="line-separator ng-float-left"></li>
+							<ui:fragment rendered="#{!userSessionInfo.systemAdmin}">
+								<li class="option">
+									<p:link id="btn-preferences" outcome="preferences" alt="#{i18n['general_configurarion_menu_preferences_label']}" value="#{i18n['general_configurarion_menu_preferences_label']}"/>
+								</li>
+							</ui:fragment>
+							<li class="option">
+								<h:outputLink id="btn-password" alt="#{i18n['general_configurarion_menu_password_label']}" onclick="PF('passwordDialog').show(); return false;">
+											#{i18n['general_configurarion_menu_password_label']}
+								</h:outputLink>
+							</li>
+							<li class="option" style="width:100%;">
+								<h:outputLink id="btn-logout" value="#{facesContext.externalContext.requestContextPath}/logout" alt="#{i18n['general_configurarion_menu_exit_label']}">
+											#{i18n['general_configurarion_menu_exit_label']}
+								</h:outputLink>
+							</li>
+						</ol>
+					</div>
+				</li>
+			</ol>
+	</composite:implementation>
+</ui:composition>

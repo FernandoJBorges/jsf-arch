@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="titleTabBasic" default="#{i18n.ngTabBasic}"  />
+		<composite:attribute name="titleTabAdvanced" default="#{i18n.ngTabAdvanced}" />
+		<composite:attribute name="additionalUpdate" type="java.lang.String" />
+		<composite:attribute name="btnEditDisabled" type="java.lang.Boolean" default="false" />		
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="componentes/ngTabview.css" />
+		<p:outputPanel styleClass="tabtoolbar">
+			<ul class="tab">
+				<li>
+				    <p:commandLink  partialSubmit="true"  
+									id="tabBasic"
+									styleClass="tablinks #{defaultMBean.tabViewAdvancedOpened ? '' : 'active'}"
+				    			   	global="false"
+				    			   	update="@(.tabviewAdvanced) @(.tabtoolbar) :messages @(.tabcontent)" value="#{cc.attrs.titleTabBasic}">
+				    			   	<f:setPropertyActionListener target="#{defaultMBean.tabViewAdvancedOpened}" value="false" />
+				    </p:commandLink>
+				</li>
+				<li>
+				    <p:commandLink  partialSubmit="true"
+				    				immediate="true" 
+				     				id="tabAdvanced"
+				    				styleClass="tablinks #{defaultMBean.tabViewAdvancedOpened ? 'active' : ''}" 
+				    				global="false" 
+				    				disabled="#{defaultMBean.tabViewAdvancedDisabled}"
+				    				update="@(.tabviewAdvanced) @(.tabtoolbar) :messages @(.tabcontent)" value="#{cc.attrs.titleTabAdvanced}">
+				    			   <f:setPropertyActionListener target="#{defaultMBean.tabViewAdvancedOpened}" value="true" />
+				    </p:commandLink>
+				</li>
+			</ul>
+		</p:outputPanel>
+		<p:outputPanel styleClass="tabcontainner">
+			<composite:insertChildren />
+			<p:outputPanel rendered="#{defaultMBean.filterAccordionOpened}">
+				<ui:include src="../include/ngViewSearchBtn.xhtml">
+					<ui:param name="btnDisabled" value="#{cc.attrs.btnEditDisabled}"  />
+					<ui:param name="additionalUpdate" value="#{cc.attrs.additionalUpdate}"  />
+					<ui:param name="searchByEnter" value="true" />
+				</ui:include>
+			</p:outputPanel>
+		</p:outputPanel>
+	</composite:implementation>
+</ui:composition>

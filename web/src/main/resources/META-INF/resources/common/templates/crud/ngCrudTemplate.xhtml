@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/common/templates/ngs/responsive.xhtml">
+	<ui:define name="content">
+	<h:outputStylesheet name="componentes/ngCrudTemplate.css" library="css" />
+		<h:form id="ng-form" prependId="true" enctype="multipart/form-data">
+			<p:outputPanel id="ng-panel-crud" style="width:100%" styleClass="ng-panel-class">
+				<!-- BLOCLO DE PESQUISA -->
+				<p:outputPanel id="ng-search-list-block" rendered="#{defaultMBean.stateFind}" styleClass="ng-panel-class">
+					<ui:insert name="searchlistBlock" />
+				</p:outputPanel>
+				<!-- BLOCO DE CRIACAO/EDICAO -->
+				<p:outputPanel id="ng-create-edit-block" rendered="#{defaultMBean.stateInsert or defaultMBean.stateUpdate}" styleClass="ng-panel-class">
+					<ui:insert name="addUpdateBlock" />
+				</p:outputPanel>
+			</p:outputPanel>
+		</h:form>
+		<!-- BLOCO DE DIALOGS -->
+		<p:outputPanel id="ng-panel-crud-dialog" style="width:100%" styleClass="ng-panel-class">
+			<p:outputPanel id="ng-create-edit-dialog-block"  styleClass="ng-panel-class">
+				<ui:insert name="addDialogBlock" />
+			</p:outputPanel>
+		</p:outputPanel>
+	</ui:define>
+</ui:composition>  

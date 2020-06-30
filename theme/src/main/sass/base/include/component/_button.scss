@@ -1,0 +1,137 @@
+.ng-ui-button-secundary.ui-button:hover {
+	background: $colorSecondary !important;
+	@include transition;
+}
+
+.ng-ui-button-secundary.ui-button{
+	background: $colorSecondary !important;
+	font-size: $fontSizeForm !important;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	text-transform: uppercase;
+	color: $colorWhite !important;
+	height: 36px !important;
+	text-transform: uppercase;
+	@include transition;
+	@include border-radius(4px);
+}
+
+/* custom button */
+.ng-ui-button.ui-button {
+	font-size: $fontSizeForm !important;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	text-transform: uppercase;
+}
+
+.ng-ui-button.ui-button.ui-state-default .ui-icon {
+	background-image: none;
+}
+
+.ng-ui-button.ui-button {
+	color: $colorWhite !important;
+	height: 36px !important;
+}
+
+.ng-ui-button.ui-button {
+	background: $colorPrimary !important;
+	text-transform: uppercase;
+	@include transition;
+	@include border-radius(4px);
+}
+
+.ng-ui-button.ui-button:hover {
+	background: $colorPrimaryHover !important;
+	@include transition;
+}
+
+.ui-button.ui-state-default .ui-icon {
+	background-image: url("\#{resource['#{$primefaces-theme}:images/ui-icons_454545_256x240.png']}");
+}
+
+.ng-command-button.ui-button.ui-state-default .ui-icon {
+	background: transparent !important;
+}
+
+.ng-command-button.ui-button-icon-only .ui-icon {
+	left: 50%;
+	margin-left: -9px;
+}
+
+.ui-button-text.ui-c {
+	font-family: $fontFamily;
+}
+
+.ng-fa-circle.ui-button.ui-state-default .ui-icon {
+	background-image: none;
+}
+
+.ng-fa-circle.ui-button.ui-state-default {
+	background: $colorWhite;
+	border: 0px solid $colorWhite;
+}
+
+.ng-overide-ui-icon.ui-button.ui-state-default .ui-icon {
+	background-image: none;
+}
+
+.ng-button.ui-button {
+	background: $colorPrimary !important;
+	text-transform: uppercase;
+	color: $colorWhite !important;
+	height: 36px !important;
+	font-size: $fontSizeForm !important;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	@include transition;
+	@include border-radius(4px);
+}
+
+.ng-button.ui-button:hover {
+	background: $colorPrimaryHover !important;
+	@include transition;
+}
+
+.ng-button.ui-button.ui-state-default .ui-icon {
+	background-image: none;
+}
+
+.ui-button {
+	outline: 0 !important;
+}
+
+.ng-fa-circle.ui-button-icon-only {
+	width: 0.4em;
+}
+
+.ui-datepicker-trigger.ui-button-icon-only {
+	width: 25px;
+}
+
+.ui-fluid .ui-trigger-calendar .ui-button-icon-only .ui-button-text {
+	padding: 0.3em !important;
+	margin-top: 1px;
+}
+
+.refreshButton .ui-button, .refreshButton.ui-button {
+	height: 36px !important;
+	float: right;
+	background: $colorWhite !important;
+	color: $colorTertiary !important;
+	font-size: 16px;
+	width: 36px;
+	@include border-radius(50%);
+}
+
+.refreshButton .ui-button.ui-state-hover, 
+.refreshButton.ui-button.ui-state-hover	{
+	background: $colorPrimary !important;
+	color: $colorWhite !important;
+}
+
+.refreshButton .ui-icon {
+	text-indent: 0 !important;
+	background-image: none !important;
+	height: 18px;
+}
+

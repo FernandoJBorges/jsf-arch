@@ -1,0 +1,88 @@
+.ui-messages-info, .ui-messages-warn, .ui-messages-error, .ui-messages-fatal {
+	border: 4px solid $colorWhite !important;
+}
+
+.ui-messages-info-icon, .ui-messages-warn-icon, .ui-messages-error-icon,
+	.ui-messages-fatal-icon, .ui-message-info-icon, .ui-message-warn-icon,
+	.ui-message-error-icon, .ui-message-fatal-icon {
+	background: url("\#{resource['#{$primefaces-theme}:images/sprite-notification-icons.png']}") no-repeat !important;
+}
+
+.ui-messages-info-icon, .ui-messages-error-icon, .ui-messages-fatal-icon {
+	height: 17px !important;
+	width: 12px !important;
+	margin-top: 0px !important;
+}
+
+.ui-messages-warn-icon {
+	height: 17px !important;
+	width: 16px !important;
+	margin-top: 0px !important;
+	background-position: -36px -1px !important;
+}
+
+.ui-messages-info-summary, .ui-messages-warn-summary,
+	.ui-messages-error-summary, .ui-messages-fatal-summary,
+	.ui-message-info-summary, .ui-message-warn-summary,
+	.ui-message-error-summary, .ui-message-fatal-summary {
+	margin-left: 0px !important;
+}
+
+.ui-messages-error-icon {
+	background-position: -14px 2px !important;
+}
+
+#messages .ui-icon {
+	background:
+		url("\#{resource['#{$primefaces-theme}:images/sprite-notification-icons.png']}")
+		no-repeat !important;
+}
+
+#messages .ui-icon-close {
+	background-position: -50px 2px !important;
+}
+
+.ui-messages .ui-messages-close {
+	background: none repeat scroll 0 0 $colorWhite;
+	cursor: pointer;
+	@include border-radius(4px);
+}
+
+.ui-messages-close:hover {
+	background: none repeat scroll 0 0 $colorOffWhite !important;
+	box-shadow: 0 0 2px $colorTertiary !important;
+}
+
+.ui-messages ul {
+	text-align: left !important;
+	margin-right: 5px !important;
+}
+
+.ui-messages-info-summary, .ui-messages-warn-summary,
+	.ui-messages-error-summary, .ui-messages-fatal-summary,
+	.ui-message-info-summary, .ui-message-warn-summary,
+	.ui-message-error-summary, .ui-message-fatal-summary {
+	font-size: $fontSizeMin !important;
+}
+
+.ui-messages-error, .ui-message-error {
+	background-color: #F2DEDE !important;
+	color: #b94a48 !important;
+}
+
+.ui-messages-info, .ui-message-info {
+	background-color: #E5F8CE !important;
+	color: #69AB18 !important;
+}
+
+.ui-messages-warn, .ui-message-warn {
+	background-color: #fcf8e3 !important;
+	color: #8a6d3b !important;
+}
+
+.ui-messages-info-summary, .ui-messages-warn-summary,
+	.ui-messages-error-summary, .ui-messages-fatal-summary,
+	.ui-message-info-summary, .ui-message-warn-summary,
+	.ui-message-error-summary, .ui-message-fatal-summary {
+	font-weight: normal !important;
+}

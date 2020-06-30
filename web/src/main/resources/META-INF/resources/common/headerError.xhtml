@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<p:outputPanel rendered="#{userSessionInfo.currentUser == null}">
+		<h:form id="formHeaderError" prependId="false">
+			<p:outputPanel styleClass="ng-page-header-aux">
+				<p:outputPanel id="ng-header-containner-error">
+					<p:graphicImage id="ng-logo-empresa-error"
+									alt="Neogrid" 
+									title="Neogrid"
+									library="common" 
+									styleClass="logo-neogrid"
+									name="neogrid/imgs/logo-neogrid.png" 
+									onclick="document.location.href ='#{request.contextPath}/views/pages/dashboard.jsf'" />
+				</p:outputPanel>
+				<p:outputPanel styleClass="header-label">
+					<p:outputLabel value="#{i18n['general_app_name']}" />
+				</p:outputPanel>
+			</p:outputPanel>
+		</h:form>
+	</p:outputPanel>
+	<p:outputPanel rendered="#{userSessionInfo.currentUser != null}">
+				<ui:include src="templates/ngs/header.xhtml" />
+	</p:outputPanel>
+</ui:composition>

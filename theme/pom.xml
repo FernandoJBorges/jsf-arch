@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.neogrid.monitor</groupId>
+		<artifactId>monitor-arch</artifactId>
+		<version>1.0.19-SNAPSHOT</version>
+	</parent>
+	<artifactId>monitor-theme</artifactId>
+	<name>MONITOR-THEME</name>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>nl.geodienstencentrum.maven</groupId>
+				<artifactId>sass-maven-plugin</artifactId>
+				<version>2.23</version>
+				<configuration>
+					<sassOptions>
+						<always_update>true</always_update>
+						<style>${sass.OutputStyle}</style>
+					</sassOptions>
+					<buildDirectory>${project.basedir}/src/main/sass/base</buildDirectory>
+					<destination>${project.basedir}/src/main/resources/META-INF/resources/</destination>
+					<sassSourceDirectory>${project.basedir}/src/main/sass/base</sassSourceDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

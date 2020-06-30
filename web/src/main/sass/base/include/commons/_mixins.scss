@@ -1,0 +1,57 @@
+
+/**
+ * Definition of the mixin, that could be included multiple times in CSS style definitions.
+ * Some browser support the standard 'border-radius' option; other browsers support it only though vendor-specific
+ * prefixes. With this mixin the SCSS defining customer layout stays clean.
+ */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border-radius-corner($corner, $radius: 4px) {
+	-webkit-border-top-#{$corner}-radius: $radius !important;
+	-webkit-border-bottom-#{$corner}-radius: $radius !important ;
+	-moz-border-radius-top#{$corner}: $radius !important;
+	-moz-border-radius-bottom#{$corner}: $radius !important ;
+	border-top-#{$corner}-radius: $radius !important;
+	border-bottom-#{$corner}-radius: $radius !important ;
+}
+
+@mixin padding($padding) {
+	padding: $padding;
+}
+
+@mixin padding-top-right-bottom-left ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+@mixin margin($margin) {
+	margin: $margin;
+}
+
+@mixin margin-top-right-bottom-left ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+@mixin transition() {
+  	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}
+
+@mixin font-face($type:regular, $weight:400){
+  src: url('../javax.faces.resource/common/neogrid/fonts/raleway/raleway-#{$type}.eot.jsf');
+  src: url('../javax.faces.resource/common/neogrid/fonts/raleway/raleway-#{$type}.eot.jsf?#iefix') format('embedded-opentype'), url('../javax.faces.resource/common/neogrid/fonts/raleway/raleway-#{$type}.woff.jsf') format('woff'), url('../javax.faces.resource/common/neogrid/fonts/raleway/raleway-#{$type}.ttf.jsf') format('truetype'), url('../javax.faces.resource/common/neogrid/fonts/raleway/raleway-#{$type}.svg.jsf#raleway#{$type}') format('svg');
+  font-weight: $weight;
+  font-style: normal;
+}

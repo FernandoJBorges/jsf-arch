@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/common/templates/ngs/responsive.xhtml">	
+	<ui:define name="header">
+		<ui:include src="/common/headerError.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+		<p:outputPanel id="http-error-content" styleClass="http-error-content">
+			<i class="icon-warning-sign"></i>
+			<p:outputLabel value="#{i18n['msg.error.page.introduction']}" styleClass="introduction" />
+			<ui:insert name="httpMessage" />
+			
+			<p:link outcome="login" rendered="#{userSessionInfo.currentUser == null}" value="#{i18n['msg.error.page.return.login']}" />
+				
+			<p:link outcome="sucessoLogin" rendered="#{userSessionInfo.currentUser != null}" value="#{i18n['msg.error.page.return.main']} " />
+			
+		</p:outputPanel>
+	</ui:define>
+</ui:composition>

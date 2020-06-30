@@ -1,0 +1,18 @@
+/* begin custom panelgrid */
+.ui-panelgrid.ui-widget .ui-widget-content {
+	background: transparent;
+	border: 0px;
+}
+
+.ui-panelgrid td {
+	border-style: none !important;
+	padding-right: 4px;
+}
+
+.ui-panelgrid {
+	left: 0px
+}
+
+.ui-panelgrid .ui-panelgrid-cell {
+	padding-right: 1px !important;
+}

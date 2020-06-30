@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="disabled" type="java.lang.Boolean" default="false" />
+		<composite:attribute name="btnDisabledEdit" type="java.lang.Boolean" default="false" />
+		<composite:attribute name="btnRenderEdit" type="java.lang.Boolean" default="true" />
+		<composite:attribute name="btnDisabledRemove" type="java.lang.Boolean" default="false" />
+		<composite:attribute name="btnRenderedRemove" type="java.lang.Boolean" default="true" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+				<p:remoteCommand name="REMOTE" action="#{defaultMBean.onStartDataTableLineActions}" global="false" />
+					<p:commandButton id="ng-dyna-button" icon="fa fa-bars" styleClass="ng-command-button" 
+						title="#{i18n['tooltilp.column.actions.click']}" 
+					 	disabled="#{cc.attrs.disabled}" onstart="REMOTE()" global="false">
+						<f:setPropertyActionListener target="#{defaultMBean.entity}" value="#{row}" />
+					</p:commandButton>
+					<p:menu overlay="true" trigger="ng-dyna-button" my="left top" at="left bottom" style="width:200px" styleClass="ng-dyna-button">
+							<p:menuitem value="#{i18n[defaultMBean.hasPermission('EDIT') ? 'tooltip.commandLink.edit' : 'tooltip.commandLink.view.details']}" 
+										update=":ng-form :ng-panel-crud-dialog :messages" 
+										action="#{defaultMBean.editAction}" 
+										icon="fa #{defaultMBean.hasPermission('EDIT') ? 'fa-pencil-square' : 'fa-desktop'}"
+										styleClass="ng-context-menu-item"
+										disabled="#{cc.attrs.btnDisabledEdit}"
+										rendered="#{cc.attrs.btnRenderEdit}"
+										immediate="true"
+                                        id="menuItemEdit">
+								<f:setPropertyActionListener target="#{defaultMBean.entity}" value="#{row}" />
+							</p:menuitem>
+							<p:menuitem value="#{i18n['tooltip.commandLink.delete']}" 
+										rendered="#{defaultMBean.hasPermission('REMOVE') and cc.attrs.btnRenderedRemove}"
+										onclick="PF('dlConfirmDeleteBean').show();"
+										icon="fa fa-times-circle"
+										styleClass="ng-context-menu-item"
+										disabled="#{cc.attrs.btnDisabledRemove}"
+                                        id="menuItemDelete"
+										>
+								<f:setPropertyActionListener target="#{defaultMBean.entity}" value="#{row}" />
+							</p:menuitem>
+							<composite:insertChildren />
+					</p:menu>
+	</composite:implementation>
+</ui:composition>
+
+
+

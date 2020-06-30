@@ -1,0 +1,108 @@
+.ng-logo-empresa {
+	cursor: pointer;
+	float: left;
+	margin-left: 6px;
+	margin-top: 6px;
+	width: auto;
+}
+
+.ng-slogan-empresa {
+	float: left;
+	margin-top: 27px;
+	margin-left: -10px;
+	font-size: 15px;
+}
+
+#ng-header-containner label {
+	font-size: 15px;
+	margin-left: -10px;
+	margin-top: 26px;
+}
+
+.ng-app-name, .ng-header-app-name {
+	color: $colorWhite;
+	float: left;
+	font-family: $fontFamilyBold;
+	@include padding-top-right-bottom-left(5px, 15px, 5px, 15px);
+	@include border-radius(4px); 
+}
+	
+.ng-app-name {
+	@include margin-top-right-bottom-left(21px, 0px, 0px, 0px);
+}
+
+.ng-header-app-name {
+	@include margin-top-right-bottom-left(16px, 0px, 0px, 0px);
+}
+
+#ng-header-containner-error label {
+	float: left;
+	font-size: 15px;
+	margin-left: -10px;
+	margin-top: 26px;
+}
+
+.ng-header-img-customer {
+	margin-top: 20px;
+	max-height: 80px;
+}
+
+.ng-user-estab {
+	float: left;
+	margin-left: 200px;
+	margin-top: 25px;
+	font-family: $fontFamilyBold;
+}
+
+.ng-user-role {
+	float: right;
+	font-size: 12px;
+	margin-right: 9%;
+	margin-top: 21px;
+	width: auto;
+}
+
+.ng-user-role label {
+	color: $colorWhite;
+}
+
+@media screen and (max-width: 700px) {
+	.ng-user-role {
+		display: none;
+	}
+}
+
+#ng-page-header {
+	min-width: 100% !important;
+	position: fixed;
+	height: 72px;
+	z-index: 999;
+}
+
+.ng-current-user-header {
+	float: left;
+	margin-right: 5px;
+	margin-top: 7px;
+	cursor: pointer;
+	max-width: 155px
+}
+
+.ng-btn-search-estab-header {
+	height: 23px !important;
+	width: 23px !important;
+	top: 5px;
+	@include border-radius(4px); 
+	
+	.fa-search{
+		font-size:11px
+	}
+
+	.ui-button-icon-left {
+		margin-top: -5px !important;
+	}
+}
+
+.ng-user-role-box .fa-search {
+	padding-top: 4px;
+	margin-left: 3px;
+}

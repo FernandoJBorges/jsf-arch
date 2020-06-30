@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="titleView" required="true" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="componentes/ngTitleView.css" />
+		<div class="ui-g ng-title-view">
+			  <div class="ui-g-12">
+					<p:outputPanel id="ng-panel-title-form-view" styleClass="ng-crud-header">
+					 	<p:outputLabel id="#{cc.id}-label" value="#{cc.attrs.titleView}" />	
+					</p:outputPanel>
+			  </div>
+	 	</div>
+	</composite:implementation>
+</ui:composition>

@@ -1,0 +1,56 @@
+@import '../include/commons/vars';
+@import '../include/commons/mixins';
+
+ul.tab {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+/* Float the list items side by side */
+ul.tab li {
+	float: left;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 3px;
+}
+
+/* Style the links inside the list items */
+ul.tab li a, ul.tab li span {
+	display: inline-block;
+	color: black;
+	text-align: center;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	text-decoration: none;
+	font-size: 17px;
+	border: 1px solid #ededed;
+	font-family: $fontFamily;
+    font-size: 13px;
+    font-weight: normal;
+    white-space: nowrap;
+    color: $colorTertiary;
+	@include transition;
+	@include border-radius(4px);
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:hover, ul.tab li a:focus, .active {
+	background-color:  $colorOffWhite;
+	cursor: default;
+}
+
+.tabcontainner {
+	border: 1px solid $colorDisabled;
+	margin: 0 1.5%;
+	min-width: 1000px;
+	padding: 22px 18px 17px;
+	@include border-radius(4px);
+}
+
+ul.tab li:first-child {
+	margin-left: 1.5%;
+}

@@ -1,0 +1,32 @@
+.ui-tooltip {
+	background: transparent;
+	color: $colorTertiary;
+	max-width:400px
+}
+
+.ui-tooltip .ui-tooltip-text {
+   background-color: #fff !important;
+   color: #000 !important;
+}
+
+.ui-tooltip-arrow {
+	border-color: #fff !important;
+}
+
+
+.ui-tooltip-right .ui-tooltip-arrow {
+	border-right-color: #fff
+}
+
+.ui-tooltip-left .ui-tooltip-arrow {
+	border-left-color: #fff
+}
+
+
+.ui-tooltip-top .ui-tooltip-arrow {
+	border-top-color: #fff
+}
+
+.ui-tooltip-bottom .ui-tooltip-arrow {
+	border-bottom-color: #fff
+}

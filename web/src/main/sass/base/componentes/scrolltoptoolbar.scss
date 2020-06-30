@@ -1,0 +1,29 @@
+@import '../include/commons/vars';
+
+/*
+ * style scrolltopoffset
+ * Responsavel por fixar a barra de acoes 'toolbar' no topo caso haja scroll nas telas de pesquisa
+ * 
+ */
+
+.ng-toolbar-fixed {
+	position: fixed;
+	background: $colorWhite;
+	left: 0px;
+	width: 100%;
+	z-index: 1;
+}
+
+.ng-panel-action-fixed {
+	top: 141px;
+}
+
+.ng-panel-title-fixed {
+	top: 102px;
+}
+
+.ng-panel-toolbar-fixed {
+	top: 166px;
+	border-bottom: 3px $colorPrimary solid;
+	padding-bottom: 10px;
+}

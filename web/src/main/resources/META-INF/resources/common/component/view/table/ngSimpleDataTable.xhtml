@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<composite:interface>
+		<composite:attribute name="value" required="true" />
+		<composite:attribute name="emptyMessage" required="true" />
+		<composite:attribute name="iconClass" />
+		<composite:attribute name="pageBean" type="com.neogrid.monitor.mb.AbstractMB" />
+		<composite:attribute name="rows" default="200" />
+		<composite:attribute name="paginator" default="false" />
+	</composite:interface>
+
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="componentes/ngSimpleDataTable.css" />
+		
+		<p:outputPanel id="ng-panel-simple-datatable" rendered="#{not empty cc.attrs.value}">
+			<!-- BEGIN DATATABLE -->
+			<p:dataTable var="row" paginator="#{cc.attrs.paginator}" rows="#{cc.attrs.rows}" paginatorPosition="bottom"
+						styleClass="ng-simple-data-table"
+						id="ng-simple-data-table"
+						widgetVar="simpleDataTable" 
+						rowIndexVar="rowIndex"
+						value="#{cc.attrs.value}">
+						<p:ajax event="rowToggle" listener="#{cc.attrs.pageBean.onRowToggle}" />
+				<composite:insertChildren />
+			</p:dataTable>
+		</p:outputPanel>
+		
+		<p:outputPanel id="ng-panel-simple-datatable-empty-message"
+						styleClass="simple-datatable-empty-list clearfix"
+						rendered="#{empty cc.attrs.value}">
+			<!-- icons default -->
+			<p:outputPanel rendered="#{empty cc.attrs.iconClass}">
+					<span class="icon-area"> 
+						<i class="icon-search" /> 
+						<i class="icon-warning-sign" />
+					</span>
+					<span class="message-area"> 
+						<p:outputLabel id="ng-panel-simple-datatable-empty-message-label-default" value="#{cc.attrs.emptyMessage}" />
+					</span>
+			</p:outputPanel>
+			<!-- icons custom -->
+			<p:outputPanel rendered="#{not empty cc.attrs.iconClass}">
+					<i class="#{cc.attrs.iconClass} ng-panel-simple-datatable-empty-message-icon"></i>
+					<p:outputLabel id="ng-panel-simple-datatable-empty-message-label" value="#{cc.attrs.emptyMessage}" />
+			</p:outputPanel>
+		</p:outputPanel>
+	</composite:implementation>
+</ui:composition>

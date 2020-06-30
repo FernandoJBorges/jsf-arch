@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:neogrid="http://java.sun.com/jsf/composite/common/component"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component/view/crud"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="titleView" required="true" />
+		<composite:attribute name="btnGoBackVisible" default="true"/>
+		<composite:attribute name="btnSaveLabel" />
+		<composite:attribute name="dialogHeader"  default="#{i18n['msg.info.save.questions']}" />
+		<composite:attribute name="labelBtnConfirm" default="#{i18n['btn_action_yes']}" />
+		<composite:attribute name="labelBtnCancel" default="#{i18n['btn_action_cancel']}" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<neogrid:ngTitleView id="ngTitleView" titleView="#{defaultMBean.stateUpdate ? 'Alterar ':'Criar '}#{cc.attrs.titleView}" />
+		<p:outputPanel id="ngPanelBtn" class="ng-panel-btn">
+				<p:autoUpdate />
+			    <ng:ngFormEditDefault id="ngFormEditDefault" btnGoBackVisible="#{cc.attrs.btnGoBackVisible}" btnSaveLabel="#{cc.attrs.btnSaveLabel}" />
+		</p:outputPanel> 
+		<composite:insertChildren />
+	</composite:implementation>
+</ui:composition>

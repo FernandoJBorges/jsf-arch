@@ -1,0 +1,44 @@
+.ng-container {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid $colorDisabled;
+	@include border-radius(4px);
+	div.ui-g-12 {
+		padding : 5px 0px;
+	}
+	div>label {
+		font-family: $fontFamilyBold;
+	}
+	label.ui-selectonemenu-label {
+		font-family: $fontFamily !important;
+	}
+}
+.ng-container-subtitle {
+	margin: 0px 15px;
+	label {
+		color: $colorPrimary;
+		font-size: 15px;
+		text-transform: uppercase;
+	}
+}
+.ng-container-title {
+	margin: 0px 5px;
+	label {
+		font-family: $fontFamily !important;
+	}
+}
+.ng-container-content {
+	margin: 0px 30px;
+}
+
+.ng-containner {
+	padding: 10px;
+	padding-top: 12px;
+	border: 1px solid $colorDisabled;
+	width: auto;
+	@include border-radius(4px);
+}
+
+.ng-containner-details {
+	margin: 10px 15px;
+}

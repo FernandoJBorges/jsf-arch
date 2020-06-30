@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<composite:interface>
+		<composite:attribute name="widgetVar" />
+		<composite:attribute name="header" />
+		<composite:attribute name="visible" default="false" />
+		<composite:attribute name="titleBtn" default="Alterar" />
+		<composite:attribute name="update" />
+		<composite:attribute name="closable" />
+		<composite:attribute name="styleClass" />
+		<composite:attribute name="registerButtonAction" method-signature="java.lang.String action()" />
+	</composite:interface>
+	<composite:implementation>
+		<ui:param name="widgetVar" value="#{cc.attrs.widgetVar}" />
+		<p:dialog	widgetVar="#{widgetVar}" 
+					id="#{widgetVar}"
+					modal="true"
+					visible="#{cc.attrs.visible}"
+					closable="#{cc.attrs.closable}"
+					responsive="true"
+					resizable="false"
+					styleClass="#{cc.attrs.styleClass}">
+					<ui:include src="header.xhtml">
+					 	<ui:param name="header" value="#{cc.attrs.header}" />
+					 	<ui:param name="renderedHeader" value="true" />
+					</ui:include>
+					<p:messages id="#{widgetVar}Message" />
+					<p:outputPanel styleClass="ng-containner ng-containner-dialog">
+						<composite:insertChildren />
+					</p:outputPanel>
+					<p:outputPanel class="ng-dialgo-btn">
+						<p:commandButton id="#{widgetVar}BtnSalvarSenha"
+										value="#{cc.attrs.titleBtn}"
+										action="#{cc.attrs.registerButtonAction}"
+										update="#{cc.attrs.update} #{widgetVar}Message"
+										styleClass="ng-ui-button" 
+										style="margin-right: 3px;" />
+					</p:outputPanel>
+		</p:dialog>
+	</composite:implementation>
+</ui:composition>

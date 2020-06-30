@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<composite:interface>
+		<composite:attribute name="widgetVar" required="true" />
+		<composite:attribute name="width" default="350"/>
+	</composite:interface>
+	<composite:implementation>
+		<ui:param name="widgetVar" value="#{cc.attrs.widgetVar}" />
+		<p:dialog	id="#{widgetVar}" 
+					widgetVar="#{widgetVar}" 
+					modal="true" 
+					draggable="false" 
+					resizable="false" 
+					responsive="true"
+					width="#{cc.attrs.width}">
+						<ui:include src="header.xhtml">
+						 	<ui:param name="header" value="#{i18n['export.confirmation.title']}" />
+						 	<ui:param name="renderedHeader" value="true" />
+						</ui:include>
+						
+						<p:outputPanel styleClass="ng-containner ng-containner-dialog">
+								<composite:insertChildren />
+						</p:outputPanel>
+						<p:remoteCommand name="startDownloadReport" 
+										update=":messages" 
+										global="false" 
+										onstart="fileDownloadStatus.startDownloadReport(#{exportSizeLimitExceededConfirmationMB.timeout}, '#{widgetVar}')" />
+						<div class="ng-dialgo-btn">
+								<p:commandButton	type="submit"  
+													styleClass="ng-ui-button" 
+													id="#{widgetVar}-ng-btn-confir" 
+													value="#{i18n['btn_action_yes']}" 
+													action="#{exportSizeLimitExceededConfirmationMB.export()}" 
+													rendered="true"
+													onclick="startDownloadReport()"
+													immediate="false"
+													ajax="false"
+													/>
+								<p:commandButton	id="#{widgetVar}-ng-btn-cancel" 
+													value="#{i18n['btn_action_no']}" 
+													styleClass="ng-ui-button" 
+													onclick="PF('#{widgetVar}').hide();" 
+													immediate="true" 
+													rendered="true" />
+						</div>
+		</p:dialog>
+	</composite:implementation>
+</ui:composition>
+
+
+   
+		 					

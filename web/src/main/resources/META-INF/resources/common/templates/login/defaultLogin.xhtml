@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component">
+<!-- variavel guarda contexto da view -->
+	<f:view contentType="text/html">
+	<h:head>
+		<c:set var="contextPath" value="#{request.contextPath}" scope="request" />
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<link rel="shortcut icon" href="#{contextPath}/common/neogrid/imgs/ng-favicon.ico" />
+			<title>Neogrid - Fiscal</title>
+		</f:facet>
+		<h:outputStylesheet name="ng-theme-login.css" library="css" />
+		<c:if test="#{principalMB.piwikSiteId ne '-'}">
+			<!-- Piwik -->
+			<script type="text/javascript">
+			var _paq = _paq || [];
+			_paq.push(["setDomains", ["*.#{principalMB.piwikSiteUrl}"]]);
+			_paq.push(['trackPageView']);
+			_paq.push(['enableLinkTracking']);
+			(function()
+			{ var u="//analytics.neogrid.com/piwik/"; _paq.push(['setTrackerUrl', u+'piwik.php']); _paq.push(['setSiteId', #{principalMB.piwikSiteId}]); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s); }
+			)();
+			</script>
+			<noscript><p><img src="//analytics.neogrid.com/piwik/piwik.php?idsite=#{principalMB.piwikSiteId}" style="border:0;" alt="" /></p></noscript>
+			<!-- End Piwik Code -->
+		</c:if>	
+				
+	</h:head>
+	<h:body>
+		<div id="ng-login-wrapper">
+			<div id="ng-login-header">
+				<ui:insert name="header">
+					<ui:include src="headerLogin.xhtml" >
+						<ui:param name="disableRecoveryCredential" value="#{disableRecoveryCredential}" />
+					</ui:include>
+				</ui:insert>
+			</div>
+			<!-- .header-->
+			<div id="ng-login-content">
+				<!-- Loding das telas -->
+				<ng:ajaxStatus id="ajaxStatus" />
+				<div id="ng-login-container" class="ng-content-frm-login">
+					<!-- Responsavel pelas mensagens -->
+				<p:outputPanel id="ng-header-message" class="ng-header-message" rendered="#{enableDefaultMessages}" >
+					<div class="ng-header-message" >
+						<p:messages id="messages" showDetail="false" closable="true">
+							<p:autoUpdate />
+						</p:messages>
+					</div>
+				</p:outputPanel>
+				<ui:insert name="content" />
+				</div>
+			</div>
+			<!-- .content -->
+		</div>
+		<!-- .wrapper -->
+		<div id="ng-login-footer">
+			<ui:insert name="footer">
+				<ui:include src="../ngs/footer.xhtml" />
+			</ui:insert>
+		</div>
+		<!-- .footer -->
+		<p:tooltip escape="false" />
+		<!-- multilogout -->
+		<h:outputScript library="common" name="js/multilogout/multilogout.js"/>
+		<c:if test="#{empty param.invalidatedSessionBy}">
+			<script type="text/javascript">
+				$(document).ready(function() {
+					multilogout.logout();
+				});
+			</script>
+		</c:if>
+	</h:body>
+</f:view>
+</html>

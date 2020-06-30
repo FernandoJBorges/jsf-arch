@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="httpError.xhtml">	
+	<ui:define name="httpMessage">
+		<p:outputLabel id="http-error-500" value="#{i18n['msg.error.page.notfound.500']}" styleClass="error-message" />
+		<p:scrollPanel styleClass="stack-trace-error" mode="native" rendered="#{userSessionInfo.currentUser != null}">
+			<p>
+				<h:outputText value="#{pfExceptionHandler.formattedStackTrace}"
+					escape="false" />
+			</p>
+		</p:scrollPanel>
+	</ui:define>
+</ui:composition>
+</html>

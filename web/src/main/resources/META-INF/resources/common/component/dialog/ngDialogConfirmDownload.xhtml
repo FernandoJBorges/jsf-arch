@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+	<composite:interface>
+		<composite:attribute name="widgetVar" required="true" />
+		<composite:attribute name="header" required="true" />
+		<composite:attribute name="action" method-signature="java.lang.String action()" />
+		<composite:attribute name="fileDownload" type="org.primefaces.model.StreamedContent" />
+		<composite:attribute name="updateGrid" default="@this" />
+	</composite:interface>
+	<composite:implementation>
+		<ui:param name="widgetVar" value="#{cc.attrs.widgetVar}" />
+		<p:dialog id="#{widgetVar}" 
+					widgetVar="#{widgetVar}" 
+					modal="true" 
+					draggable="false" 
+					resizable="false" 
+					responsive="true">
+					<ui:include src="header.xhtml">
+							 	<ui:param name="header" value="#{cc.attrs.header}" />
+							 	<ui:param name="renderedHeader" value="true" />
+					</ui:include>
+					<div class="ng-dialgo-btn ng-containner ng-containner-dialog">
+						<p:commandButton id="#{widgetVar}-ng-btn-confir-download-dinamic" 
+								value="Download" ajax="false"
+								update="#{cc.attrs.updateGrid} :messages" 
+								styleClass="ng-ui-button" 
+								onclick="PrimeFaces.monitorDownload(start, stop);PF('#{widgetVar}').hide();" 
+								icon="fa fa-download" 
+								rendered="#{not empty cc.attrs.action}"
+								actionListener="#{cc.attrs.action}">
+								<p:fileDownload value="#{cc.attrs.fileDownload}" />
+						</p:commandButton>
+						<p:commandButton id="#{widgetVar}-ng-btn-confir-download" 
+								value="Download" ajax="false"
+								update="#{cc.attrs.updateGrid} :messages" 
+								styleClass="ng-ui-button" 
+								onclick="PrimeFaces.monitorDownload(start, stop);PF('#{widgetVar}').hide();" 
+								icon="fa fa-download" 
+								rendered="#{empty cc.attrs.action}"
+								actionListener="#{defaultMBean.prepareZipDownload}">
+								<p:fileDownload value="#{defaultMBean.fileDownload}" />
+						</p:commandButton>
+						<p:commandButton id="#{widgetVar}-ng-btn-cancel-download" 
+										value="#{i18n['btn_action_cancel']}" 
+										styleClass="ng-ui-button" 
+										onclick="PF('#{widgetVar}').hide();" 
+										immediate="true" />
+					</div>
+		</p:dialog>
+	</composite:implementation>
+</ui:composition>
+
+
+   

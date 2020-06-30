@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ngView="http://java.sun.com/jsf/composite/common/component/view"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="list" required="false" default="#{i18n['ng.title.list']}"/>
+		<composite:attribute name="updateSearch" default=":ng-form:ng-search-comp:ng-btn-accordion :ng-form:ng-search-comp:ng-accordion :ng-form:ng-detail-dataTable:ng-panel-datatable :ng-form:ng-selected-actions:ng-selected-actions-panel :ng-panel-crud-dialog" />
+		<composite:attribute name="btnEditDisabled" type="java.lang.Boolean" default="false" />
+		<composite:attribute name="btnGoBackRendered" type="java.lang.Boolean" default="true" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+	<h:outputStylesheet library="css" name="componentes/ngTabview.css" />
+	<ng:ngTitleView id="titleView" titleView="#{cc.attrs.list} #{cc.attrs.titleView}" />
+		<ui:include src="../include/ngAccordion.xhtml">
+			<ui:param name="btnGoBackRendered" value="#{cc.attrs.btnGoBackRendered}"  />
+		</ui:include>
+			<!-- Begin content accordion -->
+		<p:outputPanel  id="ng-accordion" styleClass="ng-content-accordion ng-active" style="border:0px !important">
+			<p:outputPanel rendered="#{defaultMBean.filterAccordionOpened}">
+				<p:outputPanel styleClass="tabcontainner">
+						<ngView:ngViewEmpty id="ng-tabview-search">
+								<composite:insertChildren />
+						</ngView:ngViewEmpty> 
+						<p:outputPanel rendered="#{defaultMBean.filterAccordionOpened}">
+							<ui:include src="../include/ngViewSearchBtn.xhtml">
+										<ui:param name="btnDisabled" value="#{cc.attrs.btnEditDisabled}"  />
+										<ui:param name="searchByEnter" value="true" />
+							</ui:include>
+						</p:outputPanel>
+				</p:outputPanel>
+			</p:outputPanel>
+		</p:outputPanel>
+	</composite:implementation>
+</ui:composition>

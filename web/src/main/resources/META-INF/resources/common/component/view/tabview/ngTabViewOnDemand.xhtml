@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">	
+	<composite:interface>
+		<composite:attribute name="additionalUpdate" type="java.lang.String" />		
+	</composite:interface>	
+	<composite:implementation>		
+		<p:outputPanel id="tabContainer" styleClass="tabview-container">
+			<p:commandButton title="#{i18n['ngToolbar.buttons.refresh']}" icon="icon-refresh" styleClass="refreshButton" action="#{tabViewOnDemand.onRefresh}" update="@composite:ngTabview #{additionalUpdate}" />						
+			<p:tabView id="ngTabview" dynamic="true" cache="true" activeIndex="#{tabViewOnDemand.activeTabIndex}" >				
+				<p:ajax event="tabChange" listener="#{tabViewOnDemand.onTabChanged}" update="@previous" global="false"></p:ajax>
+				<composite:insertChildren />
+			</p:tabView>
+		</p:outputPanel>
+	</composite:implementation>
+</ui:composition>

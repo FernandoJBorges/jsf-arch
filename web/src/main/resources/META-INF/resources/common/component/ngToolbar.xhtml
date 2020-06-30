@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dialog="http://java.sun.com/jsf/composite/common/component/dialog">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="hasExport" type="java.lang.Boolean" default="false" />
+		<composite:attribute name="hasRefresh" type="java.lang.Boolean" default="true" />
+		<composite:attribute name="refreshAction" method-signature="void action()" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<h:outputStylesheet library="css" name="componentes/ngSelectActions.css" />
+		<f:verbatim>
+			<!--[if lte IE 8]>
+				<link type="text/css" rel="stylesheet" href="#{request.contextPath}/javax.faces.resource/ngSelectActionsHack.css.jsf?ln=css" />
+	    	<![endif]-->
+		</f:verbatim>
+		<h:outputStylesheet library="css" name="componentes/ngToolbar.css" />
+		<p:outputPanel styleClass="ng-panel-toolbar">
+			<p:outputPanel id="toolbarContainer" styleClass="ng-toolbar-container updateable-by-datatable">
+				<p:outputPanel rendered="#{defaultMBean.lazyModel.listSize > 0}">
+					<!-- BOTAO ATUALIZAR DADOS DA TOOLBAR -->
+					<p:outputPanel class="refreshButton" rendered="#{cc.attrs.hasRefresh}">
+						<p:commandButton id="btnRefresh" 
+										title="#{i18n['ngToolbar.buttons.refresh']}" 
+										icon="icon-refresh" 
+										rendered="#{not empty cc.getValueExpression('refreshAction')}"
+										action="#{cc.attrs.refreshAction}" 
+										update=":messages @(.ng-page-content)" />
+						<p:commandButton id="btnRefreshDefault" 
+										title="#{i18n['ngToolbar.buttons.refresh']}" 
+										icon="icon-refresh" 
+										rendered="#{empty cc.getValueExpression('refreshAction')}"
+										action="#{defaultMBean.findByFilters}" 
+										update=":messages @(.ng-page-content)" />
+					</p:outputPanel>
+					<!-- MENU DE OPÇÕES PARA EXPORTAR -->
+					<p:outputPanel class="exportButton" rendered="#{cc.attrs.hasExport}">
+						<h:outputScript library="js" name="fileDownloadStatus.js" />
+						<p:remoteCommand name="downloadReport" update=":messages" global="false" onstart="fileDownloadStatus.startDownloadReport(#{defaultMBean.findTimeout()})" />
+						<p:commandButton id="btnExport"
+										type="button"
+										value="#{i18n['ngToolbar.buttons.exporter']}"
+										icon="fa fa-caret-down"
+										styleClass="ng-table-actions-container ng-command-button"
+										title="#{i18n['tooltilp.column.actions.click']}"
+										 />
+						<p:menu	 overlay="true" trigger="btnExport" my="right top" at="right bottom" style="max-width:100px">
+										<p:menuitem id="toolbar-export-xlsx-action"
+													value="#{i18n['label.title.exporter.excel.toolbar']}"
+													icon="ng-btn-actions-select fa fa-file-excel-o"
+													styleClass="ng-context-menu-item"
+													ajax="false"
+													immediate="true"
+													onclick="downloadReport();"
+													action="#{defaultMBean.actionEvent('exportXLSX')}" />
+						</p:menu>
+					</p:outputPanel>
+					<p:outputPanel styleClass="ng-toolbar">
+						<div class="actions">
+							<p:menubar>
+								<composite:insertChildren />
+								<p:menuitem id="btnMoreActions" value="#{i18n['ngToolbar.buttons.moreActions']}" styleClass="dropdown moreActions" icon="fa fa-caret-down" immediate="true" />
+							</p:menubar>
+						</div>
+						<p:tieredMenu styleClass="ng-toolbar-moreActionsContainer" trigger="btnMoreActions" overlay="true" my="left top" at="left bottom" />
+					</p:outputPanel>
+				</p:outputPanel>
+				<h:outputScript library="common" name="js/componentes/ngToolbar.js" />
+				<h:outputStylesheet library="css" name="componentes/scrolltoptoolbar.css" />
+				<h:outputScript library="common" name="js/scrolltop/scrolltoptoolbar.js" />
+			</p:outputPanel>
+			<dialog:ngDialogExportConfirm id="exportOverSizeLimitConfirmation"
+				widgetVar="exportOverSizeLimitConfirmation">
+				<p:outputPanel id="overSizeLimitConfirmationMessage">
+					#{exportSizeLimitExceededConfirmationMB.dataSizeOverLimitMessage} <br/>
+					#{exportSizeLimitExceededConfirmationMB.exportQuestionMessage} <br/>
+				</p:outputPanel>
+			</dialog:ngDialogExportConfirm>
+		</p:outputPanel>
+		<div class="hidden_toolbars"></div>
+	</composite:implementation>
+</ui:composition>

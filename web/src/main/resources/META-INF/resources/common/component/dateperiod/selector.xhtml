@@ -1,0 +1,33 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:f="http://xmlns.jcp.org/jsf/core"
+              xmlns:p="http://primefaces.org/ui">
+
+    <cc:interface componentType="components.dateperiod.selector">
+        <cc:attribute name="id" type="java.lang.String" required="false"/>
+        <cc:attribute name="periods" type="java.util.List" required="true"/>
+        <cc:attribute name="initialCalendarId" type="java.lang.String" required="false"/>
+        <cc:attribute name="finalCalendarId" type="java.lang.String" required="false"/>
+        <cc:attribute name="style" default="width:124px"/>
+        <cc:attribute name="rangeValue"/>
+    </cc:interface>
+
+    <cc:implementation>
+        <p:selectOneMenu id="#{cc.attrs.id}"
+                         binding="#{cc.select}"
+                         onchange="periodChanged()"
+                         style="#{cc.attrs.style}"
+                         styleClass="ngDatePeriod-selector"
+                         value="#{cc.attrs.rangeValue}">
+            <f:selectItems value="#{cc.attrs.periods}"
+                           var="period"
+                           itemLabel="#{i18n[period.getClass().getSimpleName().concat('.').concat(period.name())]}"
+                           itemValue="#{period}"/>
+        </p:selectOneMenu>
+        <p:remoteCommand name="periodChanged"
+                         actionListener="#{cc.periodChanged}"
+                         update="@(.#{cc.attrs.id}-calendar)"
+                         global="false"/>
+    </cc:implementation>
+</ui:component>

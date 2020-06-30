@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:neogrid="http://java.sun.com/jsf/composite/common/component"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="titleView" required="true" />
+		<composite:attribute name="idView" required="true" />
+		<composite:attribute name="btnGoBackVisible" default="true"/>
+		<composite:attribute name="btnSaveLabel" />
+		<composite:attribute name="update" />
+		<composite:attribute name="dialogHeader"  default="#{i18n['msg.info.save.questions']}" />
+		<composite:attribute name="labelBtnConfirm" default="#{i18n['btn_action_yes']}" />
+		<composite:attribute name="labelBtnCancel" default="#{i18n['btn_action_cancel']}" />
+	</composite:interface>
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+	
+		<neogrid:ngTitleView id="#{cc.attrs.idView}TitleViewtEst" titleView="#{cc.attrs.titleView}" />
+		<p:outputPanel id="#{cc.attrs.idView}-ngPanelBtn" class="ng-panel-btn">
+			<p:autoUpdate />
+			<p:commandLink id="#{cc.attrs.idView}-btn-goback-estab" 
+							styleClass="ng-command-link" 
+							value="#{i18n['btn_action_goback']}" 
+							action="#{defaultMBean.goBackEstablishimet}" 
+							update=":ng-form :ng-form:ng-panel-crud #{cc.attrs.update} :messages" />
+		</p:outputPanel> 
+		<composite:insertChildren />
+	</composite:implementation>
+</ui:composition>

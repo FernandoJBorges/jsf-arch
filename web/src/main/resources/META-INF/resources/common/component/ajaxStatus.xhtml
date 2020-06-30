@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<composite:interface>
+	</composite:interface>
+	<composite:implementation>
+		<!-- Loding das telas -->
+		
+		<style>
+		.ng-process{
+			font-size:14px;
+		}
+		
+		</style>
+		
+		<p:ajaxStatus id="ajaxStatusLoading" onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+		<p:dialog id="ajaxStatusLoadingDialog" styleClass="ng-ajax-status" widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+			<p:panelGrid>
+			<p:row>
+				<p:column>
+						<h:graphicImage name="neogrid/imgs/ng-loading.gif" library="common" style="float:left;"/>
+				</p:column>
+				<p:column style="margin-left:15px">
+						<p:outputLabel styleClass="ng-process">Processando...</p:outputLabel><br />
+						<p:outputLabel>#{i18n.ngAguarde}</p:outputLabel>
+				</p:column>
+			</p:row>
+			</p:panelGrid>
+		</p:dialog>
+	</composite:implementation>
+</ui:composition>

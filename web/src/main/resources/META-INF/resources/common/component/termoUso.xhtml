@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<!-- INTERFACE -->
+	<composite:interface />
+	
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+
+		<div id="ng-termo-uso-close" class="ng-termo-uso-close"
+			onclick="PF('dlg1').hide();">
+			<div class="ng-termo-uso-close-btn"></div>
+		</div>
+
+		<div id="ng-dialog-container" class="ng-dialog-container">
+			<p:commandLink id="ng-termo-uso" styleClass="ng-page-footer">
+				#{i18n.ngTermoUso}
+			</p:commandLink>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Pellentesque sagittis egestas pretium. Nunc ornare faucibus
+				tincidunt. Curabitur ac dolor in enim porta imperdiet id nec risus.
+				Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+				per inceptos himenaeos. Sed viverra dolor vel ipsum faucibus, quis
+				laoreet dui blandit. In hac habitasse platea dictumst. Morbi vel
+				rutrum lectus, nec accumsan tellus. Nam tortor augue, sollicitudin
+				in tempus vitae, faucibus non lectus. Curabitur ultrices magna eu
+				magna hendrerit, in hendrerit dui bibendum. Aenean urna mi,
+				condimentum sed nisl et, laoreet mattis lorem. Donec semper ante
+				vitae sodales interdum. Nulla congue quam id nunc porttitor
+				pulvinar. Phasellus venenatis dolor id cursus faucibus.</p>
+			<p>Proin nec scelerisque nisi. Aliquam erat volutpat. Maecenas
+				venenatis arcu quis neque lobortis sollicitudin. In feugiat lobortis
+				semper. Aenean non lorem auctor, pulvinar sapien nec, lobortis dui.
+				Duis ornare felis eros, id sollicitudin arcu malesuada vulputate.
+				Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+				posuere cubilia Curae; Curabitur dolor lectus, tempor eu mattis eu,
+				aliquam quis massa.</p>
+		</div>
+	</composite:implementation>
+</ui:composition>

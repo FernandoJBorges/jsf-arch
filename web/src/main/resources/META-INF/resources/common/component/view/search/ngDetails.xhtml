@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ng="http://java.sun.com/jsf/composite/common/component"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<!-- INTERFACE -->
+	<composite:interface>
+		<composite:attribute name="titleView" required="true" />
+		<composite:attribute name="hasChildren" type="java.lang.Boolean" default="true" />
+	</composite:interface>
+
+	<!-- IMPLEMENTATION -->
+	<composite:implementation>
+		<ng:ngTitleView id="ng-title-view" titleView="#{cc.attrs.titleView}" />
+		<p:outputPanel styleClass="ng-text-align-right">
+			<p:commandLink id="btn-goback"
+							update=":ng-form:ng-panel-crud :messages"
+							value="#{i18n['btn_action_goback']}" 
+							styleClass="ng-command-link"
+							immediate="true" 
+							action="#{defaultMBean.goHistoryBack}" />
+		</p:outputPanel>
+		<p:outputPanel styleClass="ng-containner ng-containner-details" rendered="#{cc.attrs.hasChildren}">
+			<composite:insertChildren />
+		</p:outputPanel>
+	</composite:implementation>
+</ui:composition>
